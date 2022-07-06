@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/io/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/io/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="总结广度优先搜索和深度优先搜索">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bfs&amp;dfs">
+<meta property="og:url" content="http://dty075.coding.me/io/2018/07/20/bfsanddfs/index.html">
+<meta property="og:site_name" content="jiangling">
+<meta property="og:description" content="总结广度优先搜索和深度优先搜索">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T12:27:42.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bfs&amp;dfs">
+<meta name="twitter:description" content="总结广度优先搜索和深度优先搜索">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dty075.coding.me/io/2018/07/20/bfsanddfs/"/>
+
+
+
+
+
+  <title>bfs&dfs | jiangling</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jiangling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-entertainment">
+          <a href="/io/entertainment/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            珊瑚海
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/io/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pagelines"></i> <br />
+            
+            青花
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-language">
+          <a href="/io/language/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-compass"></i> <br />
+            
+            带你去旅行
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work">
+          <a href="/io/work/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            烟火里的尘埃
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/io/technology/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-balance-scale"></i> <br />
+            
+            天空之城
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dty075.coding.me/io/io/2018/07/20/bfsanddfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dty075">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/io/images/flower.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jiangling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">bfs&dfs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T03:25:58+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-19T20:27:42+08:00">
+                2018-07-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/io/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/io/2018/07/20/bfsanddfs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/20/bfsanddfs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结广度优先搜索和深度优先搜索</p>
+<a id="more"></a> 
+<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>1.输入数据：没什么特征，不像深搜，需要有“递归”的性质。如果是树或者图，概率更大。<br>2.状态转换图：树或者DAG图。<br>3.求解目标：求最短  </p>
+<h4 id="思考的步骤"><a href="#思考的步骤" class="headerlink" title="思考的步骤"></a>思考的步骤</h4><h5 id="1-是求路径长度，还是路径本身（或动作序列）？"><a href="#1-是求路径长度，还是路径本身（或动作序列）？" class="headerlink" title="1.是求路径长度，还是路径本身（或动作序列）？"></a>1.是求路径长度，还是路径本身（或动作序列）？</h5><pre><code>a.如果是求路径长度，则状态里面要存路径长度（或双队列+一个全局变量）  
+b.如果是求路径本身或动作序列  
+    i.要用一棵树存储宽搜过程中的路径    
+    ii.是否可以预估状态个数的上限？能够预估状态总数，则开一个大数组，用树的双亲表示法；如果不能预估状态总数，则要使用一棵通用的树。这一步也是第4步的必要不充分条件。  
+</code></pre><h5 id="2-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。"><a href="#2-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。" class="headerlink" title="2.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。"></a>2.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。</h5><h5 id="3-如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"><a href="#3-如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。" class="headerlink" title="3.如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"></a>3.如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。</h5><h5 id="4-如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。"><a href="#4-如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。" class="headerlink" title="4.如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。"></a>4.如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。</h5><pre><code>a.如果是求最短路径长度或一条路径，则只需要让“点”（即状态）不重复出现，即可保证不出现回路    
+b.如果是求所有路径，注意此时，状态转换图是DAG，即允许两个父节点指向同一个子节点。具体实现时，每个节点要“延迟”加入到已访问集合`visited`，要等一层全部访问完后，再加入到`visited`集合。  
+c.具体实现  
+    i.状态是否存在完美哈希方案？即将状态一一映射到整数，互相之间不会冲突。  
+    ii.如果不存在，则需要使用通用的哈希表（自己实现或用标准库，例如`unordered_set`来判重；自己实现哈希表的话，如果能够预估状态个数的上限，则可以开两个数组，`head`和`next`，表示哈希表。  
+    iii.如果存在，则可以开一个大布尔数组，来判重，且此时可以精确计算出状态总数，而不仅仅是预估上限。  
+</code></pre><h5 id="5-目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。"><a href="#5-目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。" class="headerlink" title="5.目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。"></a>5.目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。</h5><h4 id="代码模板"><a href="#代码模板" class="headerlink" title="代码模板"></a>代码模板</h4><p>广搜需要一个队列，用于一层一层扩展，一个hashset，用于判重，一棵树（只求长度时不需要），用于存储整棵树。<br>对于队列，可以用<code>queue</code>，也可以把<code>vector</code>当做队列使用。当求长度时，有两种做法：<br>    1.只用一个队列，但在状态结构体<code>state_t</code>里增加一个整数字段<code>level</code>，表示当前所在的层次，当碰到目标状态，直接输出<code>level</code>即可。这个方案，可以很容易的变成A*算法，把<code>queue</code>替换为<code>priority_queue</code>即可。<br>    2.用两个队列，<code>current, next</code>，分别表示当前层次和下一层，另设一个全局整数<code>level</code>，表示层数（也即路径长度），当碰到目标状态，输出<code>level</code>即可。这个方案，状态里可以不存路径长度，只需全局设置一个整数<code>level</code>，比较节省内存；</p>
+<p>对于hashset，如果有完美哈希方案，用布尔数组<code>bool visited[STATE_MAX]</code>或<code>vector&lt;bool&gt; visited(STATE_MAX, false)</code>来表示；如果没有，可以用STL里的<code>set</code>或<code>unordered_set</code>。</p>
+<p>对于树，如果用STL，可以用<code>unordered_map&lt;state_t, state_t &gt; father</code>表示一颗树，代码非常简洁。如果能够预估状态总数的上限（设为STATE_MAX），可以用数组<code>state_t nodes[STATE_MAX]</code>，即树的双亲表示法来表示树，效率更高，当然，需要写更多代码。</p>
+<blockquote>
+<p>如何表示状态</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">/** 状态 */</span><br><span class="line">struct state_t &#123;</span><br><span class="line">    int data1;  /** 状态的数据，可以有多个字段. */</span><br><span class="line">    int data2;  /** 状态的数据，可以有多个字段. */</span><br><span class="line">    // dataN;   /** 其他字段 */</span><br><span class="line">    int action; /** 由父状态移动到本状态的动作，求动作序列时需要. */</span><br><span class="line">    int level;  /** 所在的层次（从0开始），也即路径长度-1，求路径长度时需要；</span><br><span class="line">                    不过，采用双队列时不需要本字段，只需全局设一个整数 */</span><br><span class="line">    bool operator==(const state_t &amp;other) const &#123;</span><br><span class="line">        return true;  // 根据具体问题实现</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 定义hash函数</span><br><span class="line">// 方法1：模板特化，当hash函数只需要状态本身，不需要其他数据时，用这个方法比较简洁</span><br><span class="line">namespace std &#123;</span><br><span class="line">template&lt;&gt; struct hash&lt;state_t&gt; &#123;</span><br><span class="line">    size_t operator()(const state_t &amp; x) const &#123;</span><br><span class="line">        return 0; // 根据具体问题实现</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">// 方法2：函数对象，如果hash函数需要运行时数据，则用这种方法</span><br><span class="line">class Hasher &#123;</span><br><span class="line">public:</span><br><span class="line">    Hasher(int _m) : m(_m) &#123;&#125;;</span><br><span class="line">    size_t operator()(const state_t &amp;s) const &#123;</span><br><span class="line">        return 0; // 根据具体问题实现</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int m; // 存放外面传入的数据</span><br><span class="line">&#125;;</span><br><span class="line">/**</span><br><span class="line"> * @brief 反向生成路径，求一条路径.</span><br><span class="line"> * @param[in] father 树</span><br><span class="line"> * @param[in] target 目标节点</span><br><span class="line"> * @return 从起点到target的路径</span><br><span class="line"> */</span><br><span class="line">vector&lt;state_t&gt; gen_path(const unordered_map&lt;state_t, state_t&gt; &amp;father,</span><br><span class="line">        const state_t &amp;target) &#123;</span><br><span class="line">    vector&lt;state_t&gt; path;</span><br><span class="line">    path.push_back(target);</span><br><span class="line">    for (state_t cur = target; father.find(cur) != father.end(); </span><br><span class="line">            cur = father.at(cur))</span><br><span class="line">        path.push_back(cur);</span><br><span class="line">    reverse(path.begin(), path.end());</span><br><span class="line">    return path;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 反向生成路径，求所有路径.</span><br><span class="line"> * @param[in] father 存放了所有路径的树</span><br><span class="line"> * @param[in] start 起点</span><br><span class="line"> * @param[in] state 终点</span><br><span class="line"> * @return 从起点到终点的所有路径</span><br><span class="line"> */</span><br><span class="line">void gen_path(unordered_map&lt;state_t, vector&lt;state_t&gt; &gt; &amp;father,</span><br><span class="line">        const string &amp;start, const state_t&amp; state, vector&lt;state_t&gt; &amp;path,</span><br><span class="line">        vector&lt;vector&lt;state_t&gt; &gt; &amp;result) &#123;</span><br><span class="line">    path.push_back(state);</span><br><span class="line">    if (state == start) &#123;</span><br><span class="line">        if (!result.empty()) &#123;</span><br><span class="line">            if (path.size() &lt; result[0].size()) &#123;</span><br><span class="line">                result.clear();</span><br><span class="line">                result.push_back(path);</span><br><span class="line">            &#125; else if(path.size() == result[0].size()) &#123;</span><br><span class="line">                result.push_back(path);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // not possible</span><br><span class="line">                throw std::logic_error(&quot;not possible to get here&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            result.push_back(path);</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(result.back().begin(), result.back().end());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (const auto&amp; f : father[state]) &#123;</span><br><span class="line">            gen_path(father, start, f, path, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    path.pop_back();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="求最短路径长度或一条路径"><a href="#求最短路径长度或一条路径" class="headerlink" title="求最短路径长度或一条路径"></a>求最短路径长度或一条路径</h4><h5 id="单队列"><a href="#单队列" class="headerlink" title="单队列"></a>单队列</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bfs_common.h&quot;</span><br><span class="line">/**</span><br><span class="line"> * @brief 广搜，只用一个队列.</span><br><span class="line"> * @param[in] start 起点</span><br><span class="line"> * @param[in] data 输入数据</span><br><span class="line"> * @return 从起点到目标状态的一条最短路径</span><br><span class="line"> */</span><br><span class="line">vector&lt;state_t&gt; bfs(state_t &amp;start, const vector&lt;vector&lt;int&gt;&gt; &amp;grid) &#123;</span><br><span class="line">    queue&lt;state_t&gt; q; // 队列</span><br><span class="line">    unordered_set&lt;state_t&gt; visited; // 判重</span><br><span class="line">    unordered_map&lt;state_t, state_t&gt; father; // 树，求路径本身时才需要</span><br><span class="line">    // 判断状态是否合法</span><br><span class="line">    auto state_is_valid = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 判断当前状态是否为所求目标</span><br><span class="line">    auto state_is_target = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 扩展当前状态</span><br><span class="line">    auto state_extend = [&amp;](const state_t &amp;s) &#123;</span><br><span class="line">        unordered_set&lt;state_t&gt; result;</span><br><span class="line">        for (/*...*/) &#123;</span><br><span class="line">            const state_t new_state = /*...*/;</span><br><span class="line">            if (state_is_valid(new_state) &amp;&amp; </span><br><span class="line">                    visited.find(new_state) != visited.end()) &#123;</span><br><span class="line">                result.insert(new_state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;;</span><br><span class="line">    assert (start.level == 0);</span><br><span class="line">    q.push(start);</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        // 千万不能用 const auto&amp;，pop() 会删除元素，</span><br><span class="line">        // 引用就变成了悬空引用</span><br><span class="line">        const state_t state = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        visited.insert(state);</span><br><span class="line">        // 访问节点</span><br><span class="line">        if (state_is_target(state)) &#123;</span><br><span class="line">            return return gen_path(father, target); // 求一条路径</span><br><span class="line">            // return state.level + 1; // 求路径长度</span><br><span class="line">        &#125;</span><br><span class="line">        // 扩展节点</span><br><span class="line">        vector&lt;state_t&gt; new_states = state_extend(state);</span><br><span class="line">        for (const auto&amp; new_state : new_states) &#123;</span><br><span class="line">            q.push(new_state);</span><br><span class="line">            father[new_state] = state;  // 求一条路径</span><br><span class="line">            // visited.insert(state); // 优化：可以提前加入 visited 集合，</span><br><span class="line">            // 从而缩小状态扩展。这时 q 的含义略有变化，里面存放的是处理了一半</span><br><span class="line">            // 的节点：已经加入了visited，但还没有扩展。别忘记 while循环开始</span><br><span class="line">            // 前，要加一行代码, visited.insert(start)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return vector&lt;state_t&gt;();</span><br><span class="line">    //return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="双队列"><a href="#双队列" class="headerlink" title="双队列"></a>双队列</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bfs_common.h&quot;</span><br><span class="line">/**</span><br><span class="line"> * @brief 广搜，使用两个队列.</span><br><span class="line"> * @param[in] start 起点</span><br><span class="line"> * @param[in] data 输入数据</span><br><span class="line"> * @return 从起点到目标状态的一条最短路径</span><br><span class="line"> */</span><br><span class="line">vector&lt;state_t&gt; bfs(const state_t &amp;start, const type&amp; data) &#123;</span><br><span class="line">    queue&lt;state_t&gt; next, current; // 当前层，下一层</span><br><span class="line">    unordered_set&lt;state_t&gt; visited; // 判重</span><br><span class="line">    unordered_map&lt;state_t, state_t&gt; father; // 树，求路径本身时才需要</span><br><span class="line">    int level = -1;  // 层次</span><br><span class="line">    // 判断状态是否合法</span><br><span class="line">    auto state_is_valid = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 判断当前状态是否为所求目标</span><br><span class="line">    auto state_is_target = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 扩展当前状态</span><br><span class="line">    auto state_extend = [&amp;](const state_t &amp;s) &#123;</span><br><span class="line">        unordered_set&lt;state_t&gt; result;</span><br><span class="line">        for (/*...*/) &#123;</span><br><span class="line">            const state_t new_state = /*...*/;</span><br><span class="line">            if (state_is_valid(new_state) &amp;&amp; </span><br><span class="line">                    visited.find(new_state) != visited.end()) &#123;</span><br><span class="line">                result.insert(new_state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;;</span><br><span class="line">    current.push(start);</span><br><span class="line">    while (!current.empty()) &#123;</span><br><span class="line">        ++level;</span><br><span class="line">        while (!current.empty()) &#123;</span><br><span class="line">            // 千万不能用 const auto&amp;，pop() 会删除元素，</span><br><span class="line">            // 引用就变成了悬空引用</span><br><span class="line">            const auto state = current.front();</span><br><span class="line">            current.pop();</span><br><span class="line">            visited.insert(state);</span><br><span class="line">            if (state_is_target(state)) &#123;</span><br><span class="line">                return return gen_path(father, state); // 求一条路径</span><br><span class="line">                // return state.level + 1; // 求路径长度</span><br><span class="line">            &#125;</span><br><span class="line">            const auto&amp; new_states = state_extend(state);</span><br><span class="line">            for (const auto&amp; new_state : new_states) &#123;</span><br><span class="line">                next.push(new_state);</span><br><span class="line">                father[new_state] = state;</span><br><span class="line">                // visited.insert(state); // 优化：可以提前加入 visited 集合，</span><br><span class="line">                // 从而缩小状态扩展。这时 current 的含义略有变化，里面存放的是处</span><br><span class="line">                // 理了一半的节点：已经加入了visited，但还没有扩展。别忘记 while</span><br><span class="line">                // 循环开始前，要加一行代码, visited.insert(start)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(next, current); //!!! 交换两个队列</span><br><span class="line">    &#125;</span><br><span class="line">    return vector&lt;state_t&gt;();</span><br><span class="line">    // return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="求所有路径"><a href="#求所有路径" class="headerlink" title="求所有路径"></a>求所有路径</h4><h5 id="单队列-1"><a href="#单队列-1" class="headerlink" title="单队列"></a>单队列</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;Codex&#125;[label=bfs_template.cpp]</span><br><span class="line">/**</span><br><span class="line"> * @brief 广搜，使用一个队列.</span><br><span class="line"> * @param[in] start 起点</span><br><span class="line"> * @param[in] data 输入数据</span><br><span class="line"> * @return 从起点到目标状态的所有最短路径</span><br><span class="line"> */</span><br><span class="line">vector&lt;vector&lt;state_t&gt; &gt; bfs(const state_t &amp;start, const type&amp; data) &#123;</span><br><span class="line">    queue&lt;state_t&gt; q;</span><br><span class="line">    unordered_set&lt;state_t&gt; visited; // 判重</span><br><span class="line">    unordered_map&lt;state_t, vector&lt;state_t&gt; &gt; father; // DAG</span><br><span class="line">    auto state_is_valid = [&amp;](const state_t&amp; s) &#123; /*...*/ &#125;;</span><br><span class="line">    auto state_is_target = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    auto state_extend = [&amp;](const state_t &amp;s) &#123;</span><br><span class="line">        unordered_set&lt;state_t&gt; result;</span><br><span class="line">        for (/*...*/) &#123;</span><br><span class="line">            const state_t new_state = /*...*/;</span><br><span class="line">            if (state_is_valid(new_state)) &#123;</span><br><span class="line">                auto visited_iter = visited.find(new_state);</span><br><span class="line">                if (visited_iter != visited.end()) &#123;</span><br><span class="line">                    if (visited_iter-&gt;level &lt; new_state.level) &#123;</span><br><span class="line">                        // do nothing</span><br><span class="line">                    &#125; else if (visited_iter-&gt;level == new_state.level) &#123;</span><br><span class="line">                        result.insert(new_state);</span><br><span class="line">                    &#125; else &#123; // not possible</span><br><span class="line">                        throw std::logic_error(&quot;not possible to get here&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    result.insert(new_state);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; result;</span><br><span class="line">    state_t start_state(start, 0);</span><br><span class="line">    q.push(start_state);</span><br><span class="line">    visited.insert(start_state);</span><br><span class="line">    while (!q.empty()) &#123;</span><br><span class="line">        // 千万不能用 const auto&amp;，pop() 会删除元素，</span><br><span class="line">        // 引用就变成了悬空引用</span><br><span class="line">        const auto state = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        // 如果当前路径长度已经超过当前最短路径长度，</span><br><span class="line">        // 可以中止对该路径的处理，因为我们要找的是最短路径</span><br><span class="line">        if (!result.empty() &amp;&amp; state.level + 1 &gt; result[0].size()) break;</span><br><span class="line">        if (state_is_target(state)) &#123;</span><br><span class="line">            vector&lt;string&gt; path;</span><br><span class="line">            gen_path(father, start_state, state, path, result);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 必须挪到下面，比如同一层A和B两个节点均指向了目标节点，</span><br><span class="line">        // 那么目标节点就会在q中出现两次，输出路径就会翻倍</span><br><span class="line">        // visited.insert(state);</span><br><span class="line">        // 扩展节点</span><br><span class="line">        const auto&amp; new_states = state_extend(state);</span><br><span class="line">        for (const auto&amp; new_state : new_states) &#123;</span><br><span class="line">            if (visited.find(new_state) == visited.end()) &#123;</span><br><span class="line">                q.push(new_state);</span><br><span class="line">            &#125;</span><br><span class="line">            visited.insert(new_state);</span><br><span class="line">            father[new_state].push_back(state);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="双队列的写法"><a href="#双队列的写法" class="headerlink" title="双队列的写法"></a>双队列的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bfs_common.h&quot;</span><br><span class="line">/**</span><br><span class="line"> * @brief 广搜，使用两个队列.</span><br><span class="line"> * @param[in] start 起点</span><br><span class="line"> * @param[in] data 输入数据</span><br><span class="line"> * @return 从起点到目标状态的所有最短路径</span><br><span class="line"> */</span><br><span class="line">vector&lt;vector&lt;state_t&gt; &gt; bfs(const state_t &amp;start, const type&amp; data) &#123;</span><br><span class="line">    // 当前层，下一层，用unordered_set是为了去重，例如两个父节点指向</span><br><span class="line">    // 同一个子节点，如果用vector, 子节点就会在next里出现两次，其实此</span><br><span class="line">    // 时 father 已经记录了两个父节点，next里重复出现两次是没必要的</span><br><span class="line">    unordered_set&lt;string&gt; current, next;</span><br><span class="line">    unordered_set&lt;state_t&gt; visited; // 判重</span><br><span class="line">    unordered_map&lt;state_t, vector&lt;state_t&gt; &gt; father; // DAG</span><br><span class="line">    int level = -1;  // 层次</span><br><span class="line">    // 判断状态是否合法</span><br><span class="line">    auto state_is_valid = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 判断当前状态是否为所求目标</span><br><span class="line">    auto state_is_target = [&amp;](const state_t &amp;s) &#123; /*...*/ &#125;;</span><br><span class="line">    // 扩展当前状态</span><br><span class="line">    auto state_extend = [&amp;](const state_t &amp;s) &#123;</span><br><span class="line">        unordered_set&lt;state_t&gt; result;</span><br><span class="line">        for (/*...*/) &#123;</span><br><span class="line">            const state_t new_state = /*...*/;</span><br><span class="line">            if (state_is_valid(new_state) &amp;&amp; </span><br><span class="line">                    visited.find(new_state) != visited.end()) &#123;</span><br><span class="line">                result.insert(new_state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;;</span><br><span class="line">    vector&lt;vector&lt;state_t&gt; &gt; result;</span><br><span class="line">    current.insert(start);</span><br><span class="line">    while (!current.empty()) &#123;</span><br><span class="line">        ++ level;</span><br><span class="line">        // 如果当前路径长度已经超过当前最短路径长度，可以中止对该路径的</span><br><span class="line">        // 处理，因为我们要找的是最短路径</span><br><span class="line">        if (!result.empty() &amp;&amp; level+1 &gt; result[0].size()) break;</span><br><span class="line">        // 1. 延迟加入visited, 这样才能允许两个父节点指向同一个子节点</span><br><span class="line">        // 2. 一股脑current 全部加入visited, 是防止本层前一个节点扩展</span><br><span class="line">        // 节点时，指向了本层后面尚未处理的节点，这条路径必然不是最短的</span><br><span class="line">        for (const auto&amp; state : current)</span><br><span class="line">            visited.insert(state);</span><br><span class="line">        for (const auto&amp; state : current) &#123;</span><br><span class="line">            if (state_is_target(state)) &#123;</span><br><span class="line">                vector&lt;string&gt; path;</span><br><span class="line">                gen_path(father, path, start, state, result);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            const auto new_states = state_extend(state);</span><br><span class="line">            for (const auto&amp; new_state : new_states) &#123;</span><br><span class="line">                next.insert(new_state);</span><br><span class="line">                father[new_state].push_back(state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        current.clear();</span><br><span class="line">        swap(current, next);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><h4 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h4><p>1.输入数据：如果是递归数据结构，如单链表，二叉树，集合，则百分之百可以用深搜；如果是非递归数据结构，如一维数组，二维数组，字符串，图，则概率小一些。<br>2.状态转换图：树或者图。<br>3.求解目标：必须要走到最深（例如对于树，必须要走到叶子节点）才能得到一个解，这种情况适合用深搜。</p>
+<h4 id="思考的步骤-1"><a href="#思考的步骤-1" class="headerlink" title="思考的步骤"></a>思考的步骤</h4><h5 id="1-是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。"><a href="#1-是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。" class="headerlink" title="1.是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。"></a>1.是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。</h5><pre><code>a.如果是路径条数，则不需要存储路径。
+b.如果是求路径本身，则要用一个数组&apos;path[]&apos;存储路径。跟宽搜不同，宽搜虽然最终求的也是一条路径，但是需要存储扩展过程中的所有路径，在没找到答案之前所有路径都不能放弃；而深搜，在搜索过程中始终只有一条路径，因此用一个数组就足够了。
+</code></pre><h5 id="2-只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。"><a href="#2-只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。" class="headerlink" title="2.只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。"></a>2.只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。</h5><h5 id="3-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态struct里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），struct里的字段与函数参数一一对应。"><a href="#3-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态struct里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），struct里的字段与函数参数一一对应。" class="headerlink" title="3.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态struct里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），struct里的字段与函数参数一一对应。"></a>3.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态<code>struct</code>里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），<code>struct</code>里的字段与函数参数一一对应。</h5><h5 id="4-如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"><a href="#4-如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。" class="headerlink" title="4.如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"></a>4.如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。</h5><h5 id="5-终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。"><a href="#5-终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。" class="headerlink" title="5.终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。"></a>5.终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。</h5><h5 id="6-收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。"><a href="#6-收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。" class="headerlink" title="6.收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。"></a>6.收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。</h5><pre><code>由于很多时候终止条件和收敛条件是是合二为一的，因此很多人不区分这两种条件。仔细区分这两种条件，还是很有必要的。
+为了判断是否到了收敛条件，要在函数接口里用一个参数记录当前的位置（或距离目标还有多远）。如果是求一个解，直接返回这个解；如果是求所有解，要在这里收集解，即把第一步中表示路径的数组`path[]`复制到解集合里。
+</code></pre><h5 id="7-关于判重"><a href="#7-关于判重" class="headerlink" title="7.关于判重"></a>7.关于判重</h5><pre><code>a.是否需要判重？如果状态转换图是一棵树，则不需要判重，因为在遍历过程中不可能重复；如果状态转换图是一个DAG，则需要判重。这一点跟BFS不一样，BFS的状态转换图总是DAG，必须要判重。
+b.怎样判重？跟广搜相同，见第9.4节。同时，DAG说明存在重叠子问题，此时可以用缓存加速，见第8步。
+</code></pre><h5 id="8-如何加速？"><a href="#8-如何加速？" class="headerlink" title="8.如何加速？"></a>8.如何加速？</h5><pre><code>a.剪枝。深搜一定要好好考虑怎么剪枝，成本小收益大，加几行代码，就能大大加速。这里没有通用方法，只能具体问题具体分析，要充分观察，充分利用各种信息来剪枝，在中间节点提前返回。
+b.缓存。
+    i.前提条件：状态转换图是一个DAG。DAG=&gt;存在重叠子问题=&gt;子问题的解会被重复利用，用缓存自然会有加速效果。如果依赖关系是树状的（例如树，单链表等），没必要加缓存，因为子问题只会一层层往下，用一次就再也不会用到，加了缓存也没什么加速效果。
+    ii.具体实现：可以用数组或HashMap。维度简单的，用数组；维度复杂的，用HashMap，C++有`map`，C++ 11以后有`unordered_map`，比`map`快。
+</code></pre><p>拿到一个题目，当感觉它适合用深搜解决时，在心里面把上面8个问题默默回答一遍，代码基本上就能写出来了。对于树，不需要回答第5和第8个问题。如果读者对上面的经验总结看不懂或感觉“不实用”，很正常，因为这些经验总结是我做了很多题目后总结出来的，从思维的发展过程看，“经验总结”要晚于感性认识，所以这时候建议读者先做做前面的题目，积累一定的感性认识后，再回过头来看这一节的总结，一定会有共鸣。</p>
+<h4 id="代码模板-1"><a href="#代码模板-1" class="headerlink" title="代码模板"></a>代码模板</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * dfs模板.</span><br><span class="line"> * @param[in] input 输入数据指针</span><br><span class="line"> * @param[out] path 当前路径，也是中间结果</span><br><span class="line"> * @param[out] result 存放最终结果</span><br><span class="line"> * @param[inout] cur or gap 标记当前位置或距离目标的距离</span><br><span class="line"> * @return 路径长度，如果是求路径本身，则不需要返回长度</span><br><span class="line"> */</span><br><span class="line">void dfs(type &amp;input, type &amp;path, type &amp;result, int cur or gap) &#123;</span><br><span class="line">    if (数据非法) return 0;   // 终止条件</span><br><span class="line">    if (cur == input.size()) &#123; // 收敛条件</span><br><span class="line">    // if (gap == 0) &#123;</span><br><span class="line">        将path放入result</span><br><span class="line">    &#125;</span><br><span class="line">    if (可以剪枝) return;</span><br><span class="line">    for(...) &#123; // 执行所有可能的扩展动作</span><br><span class="line">        执行动作，修改path</span><br><span class="line">        dfs(input, step + 1 or gap--, result);</span><br><span class="line">        恢复path</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="深搜与回溯法的区别"><a href="#深搜与回溯法的区别" class="headerlink" title="深搜与回溯法的区别"></a>深搜与回溯法的区别</h4><p>深搜(Depth-first search, DFS)的定义见<a href="http://en.wikipedia.org/wiki/Depth_first_search" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Depth_first_search</a><br>回溯法(backtracking)的定义见<a href="http://en.wikipedia.org/wiki/Backtracking" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Backtracking</a></p>
+<p>回溯法 = 深搜 + 剪枝。一般大家用深搜时，或多或少会剪枝，因此深搜与回溯法没有什么不同，可以在它们之间画上一个等号。本书同时使用深搜和回溯法两个术语，但读者可以认为二者等价。</p>
+<p>深搜一般用递归(recursion)来实现，这样比较简洁。</p>
+<p>深搜能够在候选答案生成到一半时，就进行判断，抛弃不满足要求的答案，所以深搜比暴力搜索法要快。</p>
+<h4 id="深搜与递归的区别"><a href="#深搜与递归的区别" class="headerlink" title="深搜与递归的区别"></a>深搜与递归的区别</h4><p>深搜经常用递归(recursion)来实现，二者常常同时出现，导致很多人误以为他俩是一个东西。</p>
+<p>深搜，是逻辑意义上的算法，递归，是一种物理意义上的实现，它和迭代(iteration)是对应的。深搜，可以用递归来实现，也可以用栈来实现；而递归，一般总是用来实现深搜。可以说，递归一定是深搜，深搜不一定用递归。</p>
+<p>递归有两种加速策略，一种是剪枝(prunning)，对中间结果进行判断，提前返回；一种是缓存，缓存中间结果，防止重复计算，用空间换时间。</p>
+<p>其实，递归+缓存，就是 memoization。所谓memoization（翻译为备忘录法，见第 节），就是”top-down with cache”（自顶向下+缓存），它是Donald Michie 在1968年创造的术语，表示一种优化技术，在top-down 形式的程序中，使用缓存来避免重复计算，从而达到加速的目的。</p>
+<p>memoization 不一定用递归，就像深搜不一定用递归一样，可以在迭代(iterative)中使用 memoization 。递归也不一定用 memoization，可以用memoization来加速，但不是必须的。只有当递归使用了缓存，它才是 memoization 。</p>
+<p>既然递归一定是深搜，为什么很多书籍都同时使用这两个术语呢？在递归味道更浓的地方，一般用递归这个术语，在深搜更浓的场景下，用深搜这个术语，读者心里要弄清楚他俩大部分时候是一回事。在单链表、二叉树等递归数据结构上，递归的味道更浓，这时用递归这个术语；在图、隐式图等数据结构上，深搜的味道更浓，这时用深搜这个术语。    </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/io/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/io/2018/07/18/Leetcode/" rel="next" title="Leetcode">
+                <i class="fa fa-chevron-left"></i> Leetcode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/io/2018/07/28/linux_50/" rel="prev" title="鸟哥的Linux私房菜">
+                鸟哥的Linux私房菜 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/07/20/bfsanddfs/"
+           data-title="bfs&dfs" data-url="http://dty075.coding.me/io/2018/07/20/bfsanddfs/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/io/images/flower.png"
+               alt="dty075" />
+          <p class="site-author-name" itemprop="name">dty075</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/io/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/io/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/io/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dty075" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/user" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-skype"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.</span> <span class="nav-text">广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考的步骤"><span class="nav-number">1.2.</span> <span class="nav-text">思考的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-是求路径长度，还是路径本身（或动作序列）？"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.是求路径长度，还是路径本身（或动作序列）？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。一般记录当前位置或整体局面。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.如何扩展状态？这一步跟第2步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.如何判断重复？如果状态转换图是一颗树，则永远不会出现回路，不需要判重；如果状态转换图是一个图（这时候是一个图上的BFS），则需要判重。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.目标状态是否已知？如果题目已经给出了目标状态，可以带来很大便利，这时候可以从起始状态出发，正向广搜；也可以从目标状态出发，逆向广搜；也可以同时出发，双向广搜。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码模板"><span class="nav-number">1.3.</span> <span class="nav-text">代码模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求最短路径长度或一条路径"><span class="nav-number">1.4.</span> <span class="nav-text">求最短路径长度或一条路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单队列"><span class="nav-number">1.4.1.</span> <span class="nav-text">单队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双队列"><span class="nav-number">1.4.2.</span> <span class="nav-text">双队列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求所有路径"><span class="nav-number">1.5.</span> <span class="nav-text">求所有路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单队列-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">单队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双队列的写法"><span class="nav-number">1.5.2.</span> <span class="nav-text">双队列的写法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">2.</span> <span class="nav-text">深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景-1"><span class="nav-number">2.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考的步骤-1"><span class="nav-number">2.2.</span> <span class="nav-text">思考的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.是求路径条数，还是路径本身（或动作序列）？深搜最常见的三个问题，求可行解的总数，求一个可行解，求所有可行解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.只要求一个解，还是要求所有解？如果只要求一个解，那找到一个就可以返回；如果要求所有解，找到了一个后，还要继续扩展，直到遍历完。广搜一般只要求一个解，因而不需要考虑这个问题（广搜当然也可以求所有解，这时需要扩展到所有叶子节点，相当于在内存中存储整个状态转换图，非常占内存，因此广搜不适合解这类问题）。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态struct里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），struct里的字段与函数参数一一对应。"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.如何表示状态？即一个状态需要存储哪些些必要的数据，才能够完整提供如何扩展到下一步状态的所有信息。跟广搜不同，深搜的惯用写法，不是把数据记录在状态struct里，而是添加函数参数（有时为了节省递归堆栈，用全局变量），struct里的字段与函数参数一一对应。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。"><span class="nav-number">2.2.4.</span> <span class="nav-text">4.如何扩展状态？这一步跟上一步相关。状态里记录的数据不同，扩展方法就不同。对于固定不变的数据结构（一般题目直接给出，作为输入数据），如二叉树，图等，扩展方法很简单，直接往下一层走，对于隐式图，要先在第1步里想清楚状态所带的数据，想清楚了这点，那如何扩展就很简单了。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。"><span class="nav-number">2.2.5.</span> <span class="nav-text">5.终止条件是什么？终止条件是指到了不能扩展的末端节点。对于树，是叶子节点，对于图或隐式图，是出度为0的节点。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。"><span class="nav-number">2.2.6.</span> <span class="nav-text">6.收敛条件是什么？收敛条件是指找到了一个合法解的时刻。如果是正向深搜（父状态处理完了才进行递归，即父状态不依赖子状态，递归语句一定是在最后，尾递归），则是指是否达到目标状态；如果是逆向深搜（处理父状态时需要先知道子状态的结果，此时递归语句不在最后），则是指是否到达初始状态。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-关于判重"><span class="nav-number">2.2.7.</span> <span class="nav-text">7.关于判重</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-如何加速？"><span class="nav-number">2.2.8.</span> <span class="nav-text">8.如何加速？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码模板-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深搜与回溯法的区别"><span class="nav-number">2.4.</span> <span class="nav-text">深搜与回溯法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深搜与递归的区别"><span class="nav-number">2.5.</span> <span class="nav-text">深搜与递归的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dty075</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three-waves.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/io/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/io/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/io/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

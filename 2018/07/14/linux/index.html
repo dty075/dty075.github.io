@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/io/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/io/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="总结一下Linux基础架构相关知识。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鸟哥的Linux私房菜">
+<meta property="og:url" content="http://dty075.coding.me/io/2018/07/14/linux/index.html">
+<meta property="og:site_name" content="jiangling">
+<meta property="og:description" content="总结一下Linux基础架构相关知识。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-13T13:54:21.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鸟哥的Linux私房菜">
+<meta name="twitter:description" content="总结一下Linux基础架构相关知识。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dty075.coding.me/io/2018/07/14/linux/"/>
+
+
+
+
+
+  <title>鸟哥的Linux私房菜 | jiangling</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jiangling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-entertainment">
+          <a href="/io/entertainment/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            珊瑚海
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/io/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pagelines"></i> <br />
+            
+            青花
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-language">
+          <a href="/io/language/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-compass"></i> <br />
+            
+            带你去旅行
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work">
+          <a href="/io/work/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            烟火里的尘埃
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/io/technology/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-balance-scale"></i> <br />
+            
+            天空之城
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dty075.coding.me/io/io/2018/07/14/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dty075">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/io/images/flower.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jiangling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">鸟哥的Linux私房菜</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T03:39:45+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-13T21:54:21+08:00">
+                2018-07-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/io/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/io/2018/07/14/linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/14/linux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结一下Linux基础架构相关知识。</p>
+<a id="more"></a> 
+<h2 id="Linux的规划和安装"><a href="#Linux的规划和安装" class="headerlink" title="Linux的规划和安装"></a>Linux的规划和安装</h2><h3 id="计算机概论"><a href="#计算机概论" class="headerlink" title="计算机概论"></a>计算机概论</h3><blockquote>
+<p>计算机硬件的<a href="http://cn.linux.vbird.org/linux_basic/0105computers_files/computer02.gif" target="_blank" rel="noopener">五大单元</a>：输入单元、 输出单元、CPU内部的控制单元、算数逻辑单元与主内存五大部分。</p>
+</blockquote>
+<p>输入单元：包括键盘、鼠標、读卡机、扫描器、手写板、触控萤幕等等一堆；</p>
+<p>主机部分：这个就是系统单元，被主机机壳保护住了，里面含有 CPU 与主内存等；</p>
+<p>输出单元：例如萤幕、打印机等等</p>
+<p>CPU 内又可分为两个主要的单元，分别是：算数逻辑单元与控制单元</p>
+<blockquote>
+<p>CPU的种类：精简指令集(RISC)与复杂指令集(CISC)系统</p>
+</blockquote>
+<blockquote>
+<p>CPU的『外频』与『倍频』</p>
+</blockquote>
+<p>外频指的是CPU与外部组件进行数据传输时的速度，倍频则是 CPU 内部用来加速工作效能的一个倍数， 两者相乘才是CPU的频率速度</p>
+<blockquote>
+<p>重点回顾</p>
+<blockquote>
+<p>计算机的定义为：『接受使用者输入指令与数据，经由中央处理器的数学与逻辑单元运算处理后，以产生或储存成有用的信息』；</p>
+</blockquote>
+<blockquote>
+<p>计算机的五大单元包括：输入单元、 输出单元、CPU内部的控制单元、算数逻辑单元与主内存五大部分；</p>
+</blockquote>
+<blockquote>
+<p>数据会流进/流出内存是CPU所发布的控制命令，而CPU实际要处理的数据则完全来自於主内存；</p>
+</blockquote>
+<blockquote>
+<p>CPU依设计理念主要分为：精简指令集(RISC)与复杂指令集(CISC)系统；</p>
+</blockquote>
+<blockquote>
+<p>关於CPU的频率部分：外频指的是CPU与外部组件进行数据传输时的速度，倍频则是CPU内部用来加速工作效能的一个倍数，两者相乘才是CPU的频率速度；</p>
+</blockquote>
+<blockquote>
+<p>一般主机板芯片组有分北桥与南桥，北桥的系统总线称为系统系统总线，因为是内存传输的主要通道，所以速度较快。南桥就是所谓的输入输出(I/O)系统总线，主要在联系硬盘、USB、网络卡等周边设备；北桥所支持的频率我们称为前端系统总线速度(Front Side Bus, FSB)，而每次传送的位数则是系统总线宽度。</p>
+</blockquote>
+<blockquote>
+<p>CPU每次能够处理的数据量称为字长大小(word size)，字长大小依据CPU的设计而有32位与64位。 我们现在所称的计算机是32或64位主要是依据这个 CPU解析的字长大小而来的！</p>
+</blockquote>
+<blockquote>
+<p>个人计算机的主内存主要组件为动态随机访问内存(Dynamic Random Access Memory, DRAM)， 至於CPU内部的第二层缓存则使用静态随机访问内存(Static Random Access Memory, SRAM)；</p>
+</blockquote>
+<blockquote>
+<p>BIOS(Basic Input Output System)是一套程序，这套程序是写死到主机板上面的一个内存芯片中， 这个内存芯片在没有通电时也能够将数据记录下来，那就是只读内存(Read Only Memory, ROM)；</p>
+</blockquote>
+<blockquote>
+<p>显示卡的规格有PCI/AGP/PCIe，目前的主流为PCIe介面；</p>
+</blockquote>
+<blockquote>
+<p>硬盘的组成为：圆形磁碟盘、机械手臂、 磁碟读取头与主轴马达所组成的，其中磁碟盘的组成为磁区、磁轨与磁柱；</p>
+</blockquote>
+<blockquote>
+<p>操作系统(Operating System, OS)其实也是一组程序， 这组程序的重点在於管理计算机的所有活动以及驱动系统中的所有硬件。</p>
+</blockquote>
+<blockquote>
+<p>计算机主要以二进位作为单位，常用的磁碟容量单位为bytes，其单位换算为1 Byte = 8bits。</p>
+</blockquote>
+<blockquote>
+<p>最阳春的操作系统仅在驱动与管理硬件，而要使用硬件时，就得需要透过应用软件或者是壳程序(shell)的功能，来呼叫操作系统操纵硬件工作。目前称为操作系统的，除了上述功能外，通常已经包含了日常工作所需要的应用软件在内了。</p>
+</blockquote>
+</blockquote>
+<h3 id="Linux是什么"><a href="#Linux是什么" class="headerlink" title="Linux是什么"></a>Linux是什么</h3><h2 id="Linux-文件、目录与磁盘格式"><a href="#Linux-文件、目录与磁盘格式" class="headerlink" title="Linux 文件、目录与磁盘格式"></a>Linux 文件、目录与磁盘格式</h2><h3 id="Linux文件权限与目录配置"><a href="#Linux文件权限与目录配置" class="headerlink" title="Linux文件权限与目录配置"></a>Linux文件权限与目录配置</h3><h4 id="Linux-用户身份与群组记录的文件"><a href="#Linux-用户身份与群组记录的文件" class="headerlink" title="Linux 用户身份与群组记录的文件"></a>Linux 用户身份与群组记录的文件</h4><p>默认的情况下，所有的系统上的账号与一般身份使用者，还有那个root的相关信息， 都是记录在<code>/etc/passwd</code>这个文件内的。至于个人的密码则是记录在<code>/etc/shadow</code>这个文件下。 此外，Linux所有的组名都纪录在<code>/etc/group</code>内！</p>
+<h4 id="改变文件属性与权限"><a href="#改变文件属性与权限" class="headerlink" title="改变文件属性与权限"></a>改变文件属性与权限</h4><blockquote>
+<p>chgrp ：改变文件所属群组</p>
+</blockquote>
+<blockquote>
+<p>chown ：改变文件拥有者</p>
+</blockquote>
+<blockquote>
+<p>chmod ：改变文件的权限, SUID, SGID, SBIT等等的特性</p>
+</blockquote>
+<blockquote>
+<p>重点回顾</p>
+<blockquote>
+<p>Linux的每个文件中，依据权限分为使用者、群组与其他人三种身份；</p>
+</blockquote>
+<blockquote>
+<p>群组最有用的功能之一，就是当你在团队开发资源的时候，且每个账号都可以有多个群组的支持；</p>
+</blockquote>
+<blockquote>
+<p>利用ls -l显示的文件属性中，第一个字段是文件的权限，共有十个位，第一个位是文件类型， 接下来三个为一组共三组，为使用者、群组、其他人的权限，权限有r,w,x三种；</p>
+</blockquote>
+<blockquote>
+<p>如果档名之前多一个『 . 』，则代表这个文件为『隐藏档』；</p>
+</blockquote>
+<blockquote>
+<p>更改文件的群组支持可用chgrp，修改文件的拥有者可用chown，修改文件的权限可用chmod</p>
+</blockquote>
+<blockquote>
+<p>chmod修改权限的方法有两种，分别是符号法与数字法，数字法中r,w,x分数为4,2,1；</p>
+</blockquote>
+<blockquote>
+<p>对文件来讲，权限的效能为：</p>
+<blockquote>
+<p>r：可读取此一文件的实际内容，如读取文本文件的文字内容等；</p>
+</blockquote>
+<blockquote>
+<p>w：可以编辑、新增或者是修改该文件的内容(但不含删除该文件)；</p>
+</blockquote>
+<blockquote>
+<p>x：该文件具有可以被系统执行的权限。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>对目录来说，权限的效能为：</p>
+<blockquote>
+<p>r (read contents in directory)</p>
+</blockquote>
+<blockquote>
+<p>w (modify contents of directory)</p>
+</blockquote>
+<blockquote>
+<p>x (access directory)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>要开放目录给任何人浏览时，应该至少也要给予r及x的权限，但w权限不可随便给；</p>
+</blockquote>
+<blockquote>
+<p>Linux档名的限制为：单一文件或目录的最大容许文件名为 255 个字符；包含完整路径名称及目录 (/) 之完整档名为 4096 个字符</p>
+</blockquote>
+<blockquote>
+<p>根据FHS的官方文件指出， 他们的主要目的是希望让使用者可以了解到已安装软件通常放置于那个目录下</p>
+</blockquote>
+<blockquote>
+<p>FHS订定出来的四种目录特色为：shareable, unshareable, static, variable等四类；</p>
+</blockquote>
+<blockquote>
+<p>FHS所定义的三层主目录为：/, /var, /usr三层而已；</p>
+</blockquote>
+<blockquote>
+<p>有五个目录不可与根目录放在不同的partition，分别为/etc, /bin, /lib, /dev, /sbin五个。</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/io/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/io/2018/07/14/国家电网/" rel="next" title="国家电网">
+                <i class="fa fa-chevron-left"></i> 国家电网
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/io/2018/07/14/DataStructure/" rel="prev" title="数据结构">
+                数据结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/07/14/linux/"
+           data-title="鸟哥的Linux私房菜" data-url="http://dty075.coding.me/io/2018/07/14/linux/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/io/images/flower.png"
+               alt="dty075" />
+          <p class="site-author-name" itemprop="name">dty075</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/io/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/io/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/io/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dty075" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/user" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-skype"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux的规划和安装"><span class="nav-number">1.</span> <span class="nav-text">Linux的规划和安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机概论"><span class="nav-number">1.1.</span> <span class="nav-text">计算机概论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux是什么"><span class="nav-number">1.2.</span> <span class="nav-text">Linux是什么</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-文件、目录与磁盘格式"><span class="nav-number">2.</span> <span class="nav-text">Linux 文件、目录与磁盘格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件权限与目录配置"><span class="nav-number">2.1.</span> <span class="nav-text">Linux文件权限与目录配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-用户身份与群组记录的文件"><span class="nav-number">2.1.1.</span> <span class="nav-text">Linux 用户身份与群组记录的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改变文件属性与权限"><span class="nav-number">2.1.2.</span> <span class="nav-text">改变文件属性与权限</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dty075</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three-waves.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/io/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/io/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/io/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

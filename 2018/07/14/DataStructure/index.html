@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/io/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/io/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="https://algorithm.yuanbin.me/zh-hans/ 总结⼀些算法和数据结构⽅⾯的基础知识">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://dty075.coding.me/io/2018/07/14/DataStructure/index.html">
+<meta property="og:site_name" content="jiangling">
+<meta property="og:description" content="https://algorithm.yuanbin.me/zh-hans/ 总结⼀些算法和数据结构⽅⾯的基础知识">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T13:39:47.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构">
+<meta name="twitter:description" content="https://algorithm.yuanbin.me/zh-hans/ 总结⼀些算法和数据结构⽅⾯的基础知识">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dty075.coding.me/io/2018/07/14/DataStructure/"/>
+
+
+
+
+
+  <title>数据结构 | jiangling</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jiangling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-entertainment">
+          <a href="/io/entertainment/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            珊瑚海
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/io/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pagelines"></i> <br />
+            
+            青花
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-language">
+          <a href="/io/language/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-compass"></i> <br />
+            
+            带你去旅行
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work">
+          <a href="/io/work/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            烟火里的尘埃
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/io/technology/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-balance-scale"></i> <br />
+            
+            天空之城
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dty075.coding.me/io/io/2018/07/14/DataStructure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dty075">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/io/images/flower.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jiangling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T22:25:58+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-19T21:39:47+08:00">
+                2018-07-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/io/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/io/2018/07/14/DataStructure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/14/DataStructure/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://algorithm.yuanbin.me/zh-hans/" target="_blank" rel="noopener">https://algorithm.yuanbin.me/zh-hans/</a></p>
+<p>总结⼀些算法和数据结构⽅⾯的基础知识</p>
+<a id="more"></a> 
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct ListNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode *next;</span><br><span class="line">    ListNode(int val,ListNode *next=NULL):val(val),next(next)&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ListNode * ReverseList(ListNode *head)&#123;</span><br><span class="line">    ListNode *pre=NULL,*tmp;</span><br><span class="line">    while(head)&#123;</span><br><span class="line">        tmp=head-&gt;next;</span><br><span class="line">        head-&gt;next=pre;</span><br><span class="line">        pre=head;</span><br><span class="line">        head=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    return pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Binary-Tree"><a href="#Binary-Tree" class="headerlink" title="Binary Tree"></a>Binary Tree</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct TreeNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(int x):val(x),left(NULL),right(NULL)&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Huffman-Compression"><a href="#Huffman-Compression" class="headerlink" title="Huffman Compression"></a>Huffman Compression</h3><h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><pre><code>核⼼：冒泡，持续⽐较相邻元素，⼤的挪到后⾯，因此⼤的会逐步往后挪，故称之为冒泡。
+时间复杂度O(n^2)，空间复杂度O(1)，稳定，因为存在两两比较，不存在跳跃。
+排序时间与输入无关，最好，最差，平均都是O(n^2)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">public static void bubbleSort(int[] nums) &#123;</span><br><span class="line">    int len = nums.length;</span><br><span class="line">    for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            System.out.print(num + &quot; &quot;);</span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println();</span><br><span class="line">        for (int j = 1; j &lt; len - i; j++) &#123;</span><br><span class="line">            if (nums[j - 1] &gt; nums[j]) &#123;</span><br><span class="line">                int temp = nums[j - 1];</span><br><span class="line">                nums[j - 1] = nums[j];</span><br><span class="line">                nums[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">void bubble_sort(int arr[], int len)&#123;</span><br><span class="line">//每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置</span><br><span class="line">    for (int i = 0; i &lt; len-1; i++)&#123;         //比较n-1次</span><br><span class="line">        bool exchange = true;               //冒泡的改进，若在一趟中没有发生逆序，则该序列已有序</span><br><span class="line">        for (int j = len-1; j &gt;i; j--)&#123;    // 每次从后边冒出一个最小值</span><br><span class="line">            if (arr[j] &lt; arr[j - 1])&#123;       //发生逆序，则交换</span><br><span class="line">                swap(arr[j], arr[j - 1]);</span><br><span class="line">                exchange = false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (exchange)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><pre><code>核⼼： 不断地选择剩余元素中的最⼩者。
+1. 找到数组中最⼩元素并将其和数组第⼀个元素交换位置。
+2. 在剩下的元素中找到最⼩元素并将其与数组第⼆个元素交换，直⾄整个数组排序。
+时间复杂度O(n^2)， 空间复杂度O(1)
+排序时间与输入无关，最佳情况，最坏情况都是如此, 不稳定 
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">public static void selectionSort(int[] array) &#123;</span><br><span class="line">    int len = array.length;</span><br><span class="line">    for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        for (int item : array) &#123;</span><br><span class="line">            System.out.print(item + &quot; &quot;);</span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println();</span><br><span class="line">        int min_index = i;</span><br><span class="line">        for (int j = i + 1; j &lt; len; j++) &#123;</span><br><span class="line">            if (array[j] &lt; array[min_index]) &#123;</span><br><span class="line">                min_index = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        int temp = array[min_index];</span><br><span class="line">        array[min_index] = array[i];</span><br><span class="line">        array[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">void select_sort(int arr[], int len)&#123;</span><br><span class="line">    //每次从后边选择一个最小值</span><br><span class="line">    for (int i = 0; i &lt; len-1; i++)&#123;     //只需选择n-1次</span><br><span class="line">        int min = i;</span><br><span class="line">        for (int j = i+1; j &lt; len; j++)&#123;</span><br><span class="line">            if (arr[min]&gt;arr[j])&#123;</span><br><span class="line">                min = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (min != i)&#123;</span><br><span class="line">            swap(arr[i], arr[min]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><pre><code>核⼼： 将两个有序对数组归并成⼀个更⼤的有序数组。 通常做法为递归排序， 并将两个不同的有序数
+组归并到第三个数组中。
+时间复杂度 O(nlogn), 空间复杂度O(n)+O(logn)
+排序时间与输入无关，最佳情况，最坏情况都是如此, 稳定。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line"> public int merge( int p, int q, int r )&#123;</span><br><span class="line">        int count = 0;</span><br><span class="line">        int[] right = assignlist(p,q); </span><br><span class="line">        //赋值左半部分数组（赋值就是用for循环，还有一个哨兵：最后一个元素设置为maxvalue）</span><br><span class="line">        int[] left = assignlist(q+1,r); //赋值有半部分数组</span><br><span class="line">        int i = 0;</span><br><span class="line">        int j = 0;</span><br><span class="line">        for(int k = p; k&lt;=r; k++)&#123;</span><br><span class="line">            if(right[i] &lt;= left[j])&#123;    </span><br><span class="line">                arraytoSort[k] = right[i];</span><br><span class="line">                i++;    </span><br><span class="line">            &#125;</span><br><span class="line">            else if(right[i] &gt; left[j])&#123;</span><br><span class="line">                arraytoSort[k] = left[j];</span><br><span class="line">                j++;</span><br><span class="line">                count = count + (q - p + 1) -i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">  void MergeSort(int arry[],int start,int end)</span><br><span class="line"> &#123;</span><br><span class="line">    if(start&lt;end)</span><br><span class="line">    &#123;</span><br><span class="line">        int mid=(start+end)/2;//数组重点</span><br><span class="line">        MergeSort(arry,start,mid);//递归调用，排序前半段arry[start...mid]</span><br><span class="line">        MergeSort(arry,mid+1,end);//递归调用，排序后半段arry[mid+1,end]</span><br><span class="line">        MergeArry(arry,start,mid,end);//归并上述两段有序数组。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">void merge(int arr[],int temp_arr[],int left,int mid, int right)&#123;</span><br><span class="line">    //简单归并：先复制到temp_arr，再进行归并</span><br><span class="line">    for (int i = left; i &lt;= right; i++)&#123;</span><br><span class="line">        temp_arr[i] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int pa = left, pb = mid + 1;</span><br><span class="line">    int index = left;</span><br><span class="line">    while (pa &lt;= mid &amp;&amp; pb &lt;= right)&#123;</span><br><span class="line">        if (temp_arr[pa] &lt;= temp_arr[pb])&#123;</span><br><span class="line">            arr[index++] = temp_arr[pa++];</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            arr[index++] = temp_arr[pb++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(pa &lt;= mid)&#123;</span><br><span class="line">        arr[index++] = temp_arr[pa++];</span><br><span class="line">    &#125;</span><br><span class="line">    while (pb &lt;= right)&#123;</span><br><span class="line">        arr[index++] = temp_arr[pb++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void merge_improve(int arr[], int temp_arr[], int left, int mid, int right)&#123;</span><br><span class="line">    //优化归并：复制时，俩头小，中间大，一次比较完</span><br><span class="line">    for (int i = left; i &lt;= mid; i++)&#123;</span><br><span class="line">        temp_arr[i] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = mid + 1; i &lt;= right; i++)&#123;</span><br><span class="line">        temp_arr[i] = arr[right + mid + 1 - i];</span><br><span class="line">    &#125;</span><br><span class="line">    int pa = left, pb = right, p = left;</span><br><span class="line">    while (p &lt;= right)&#123;</span><br><span class="line">        if (temp_arr[pa] &lt;= temp_arr[pb])&#123;</span><br><span class="line">            arr[p++] = temp_arr[pa++];</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            arr[p++] = temp_arr[pb--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void merge_sort(int arr[],int temp_arr[], int left, int right)&#123;</span><br><span class="line">    if (left &lt; right)&#123;</span><br><span class="line">        int mid = (left + right) / 2;</span><br><span class="line">        merge_sort(arr,temp_arr,0, mid);</span><br><span class="line">        merge_sort(arr, temp_arr,mid + 1, right);</span><br><span class="line">        merge(arr,temp_arr,left,mid,right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void merge_sort(int arr[], int len)&#123;</span><br><span class="line">    int *temp_arr = (int*)malloc(sizeof(int)*len);</span><br><span class="line">    merge_sort(arr,temp_arr, 0, len - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><pre><code>核⼼：通过构建有序序列，对于未排序序列，在已排序序列中从后向前扫描(对于单向链表则只能从前往后遍历)，
+找到相应位置并插⼊。 实现上通常使⽤in-place排序(需⽤到O(1)的额外空间)
+1. 从第⼀个元素开始， 该元素可认为已排序
+2. 取下⼀个元素， 对已排序数组从后往前扫描
+3. 若从排序数组中取出的元素⼤于新元素， 则移⾄下⼀位置
+4. 重复步骤3， 直⾄找到已排序元素⼩于或等于新元素的位置
+5. 插⼊新元素⾄该位置
+6. 重复2~5
+时间复杂度O(n^2), 空间复杂度O(1)
+排序时间与输入有关：输入的元素个数；元素已排序的程度。
+最佳情况，输入数组是已经排好序的数组，运行时间是n的线性函数； 最坏情况，输入数组是逆序，运行时间是n的二次函数。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">public static void insertionSort(int[] array) &#123;</span><br><span class="line">    int len = array.length;</span><br><span class="line">    for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        int index = i, array_i = array[i];</span><br><span class="line">        while (index &gt; 0 &amp;&amp; array[index - 1] &gt; array_i) &#123;</span><br><span class="line">            array[index] = array[index - 1];</span><br><span class="line">            index -= 1;</span><br><span class="line">        &#125; </span><br><span class="line">        array[index] = array_i;</span><br><span class="line">        /* print sort process */</span><br><span class="line">        for (int item : array) &#123;</span><br><span class="line">            System.out.print(item + &quot; &quot;);</span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void insertion_sort(T arr[], int len) &#123;</span><br><span class="line">    int i, j;</span><br><span class="line">    T temp;</span><br><span class="line">    for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        temp = arr[i];</span><br><span class="line">        for (int j = i - 1; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j--) &#123;</span><br><span class="line">            a[j + 1] = a[j];</span><br><span class="line">        &#125; </span><br><span class="line">        arr[j + 1] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void insert_binary_sort(int arr[], int len)&#123;</span><br><span class="line">    //改进的插入排序，往前插入比较时，进行二分查找</span><br><span class="line">    for (int i = 1; i &lt; len; i++)&#123;</span><br><span class="line">        if (arr[i] &lt; arr[i - 1])&#123;</span><br><span class="line">            int temp = arr[i];</span><br><span class="line">            int low = 0, high = i - 1, mid;</span><br><span class="line">            while (low &lt;= high)&#123;</span><br><span class="line">                mid = (low + high) / 2;</span><br><span class="line">                if (temp &lt; arr[mid])&#123;</span><br><span class="line">                    high = mid - 1;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    low = mid + 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int j = i; j &gt;low; j--)&#123;</span><br><span class="line">                arr[j] = arr[j - 1];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[low] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><pre><code>核⼼： 基于插⼊排序， 使数组中任意间隔为h的元素都是有序的， 即将全部元素分为h个区域使⽤插⼊排序。
+其实现可类似于插⼊排序但使⽤不同增量。 更⾼效的原因是它权衡了⼦数组的规模和有序性。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt; void shell_sort(T arr[], int len) &#123;</span><br><span class="line">    int gap, i, j;</span><br><span class="line">    T temp;</span><br><span class="line">    for (gap = len &gt;&gt; 1; gap &gt; 0; gap &gt;&gt;= 1)&#123;</span><br><span class="line">        for (i = gap; i &lt; len; i++) &#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">            for (j = i - gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap)</span><br><span class="line">                arr[j + gap] = arr[j];</span><br><span class="line">            arr[j + gap] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code>核⼼：快排是⼀种采⽤分治思想的排序算法，⼤致分为三个步骤。
+1. 定基准——⾸先随机选择⼀个元素最为基准
+2. 划分区——所有⽐基准⼩的元素置于基准左侧， ⽐基准⼤的元素置于右侧
+3. 递归调⽤——递归地调⽤此切分过程
+时间复杂度 O(nlogn) 空间复杂度O（logn） 不稳定 【两个时间复杂度O(nlogn) 的排序算法都不稳定】
+时间复杂度：
+最坏O（n^2） 当划分不均匀时候 逆序and排好序都是最坏情况
+最好O（n） 当划分均匀
+partition的时间复杂度: O（n）一共需要logn次partition
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">public class Quicksort &#123;</span><br><span class="line">       public int partition(int A[], int begin, int end)&#123;</span><br><span class="line">             int i = begin;</span><br><span class="line">             int j = end;</span><br><span class="line">             int q;</span><br><span class="line">             int pivot = begin;</span><br><span class="line">             int pivotnumber = A[pivot];</span><br><span class="line">             while(i!=j)&#123;</span><br><span class="line">                   int temp;</span><br><span class="line">                   while(A[j]&gt;pivotnumber &amp;&amp; i&lt;j)&#123;</span><br><span class="line">                        j--;</span><br><span class="line">                  &#125;</span><br><span class="line">                   while(A[i]&lt;=pivotnumber &amp;&amp; i&lt;j)</span><br><span class="line">                  &#123;</span><br><span class="line">                        i++;</span><br><span class="line">                  &#125;</span><br><span class="line">                  temp = A[i];</span><br><span class="line">                  A[i] = A[j];</span><br><span class="line">                  A[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">             if(i == j)&#123;</span><br><span class="line">                   int temp;</span><br><span class="line">                  temp =A[pivot];</span><br><span class="line">                  A[pivot] = A[i];</span><br><span class="line">                  A[i] = temp;      </span><br><span class="line">            &#125;</span><br><span class="line">             return i;</span><br><span class="line">      &#125;</span><br><span class="line">       public void sort(int A[], int begin,int end)&#123;</span><br><span class="line">             if(begin&lt;end)&#123;</span><br><span class="line">                   int q;</span><br><span class="line">                  q = partition(A,begin, end);</span><br><span class="line">                  sort(A,begin, q-1);</span><br><span class="line">                  sort(A,q+1,end);</span><br><span class="line">            &#125;     </span><br><span class="line">      &#125;</span><br><span class="line">       public static void main(String[] args) &#123;</span><br><span class="line">             int array[] = &#123;8,7,1,6,5,4,3,2&#125;;</span><br><span class="line">            Quicksort s = new Quicksort();</span><br><span class="line">            s.sort(array, 0, 7);</span><br><span class="line">             for(int i=0;i&lt;array.length;i++)&#123;</span><br><span class="line">                  System. out.println(&quot;output &quot; + array[i]);</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">int partition(int arr[], const int left, const int right)&#123;</span><br><span class="line">    //对序列进行划分，以第一个为基准</span><br><span class="line">    int pivot = arr[left];</span><br><span class="line">    int pivotpos = left;</span><br><span class="line">    for (int i = left+1; i &lt;= right; i++)&#123;</span><br><span class="line">        if (arr[i] &lt; pivot)&#123;</span><br><span class="line">            pivotpos++;</span><br><span class="line">            if (pivotpos != i)&#123;     //如果交换元素就位于基准后第一个，则不需要交换</span><br><span class="line">                swap(arr[i], arr[pivotpos]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = arr[pivotpos];</span><br><span class="line">    arr[pivotpos] = pivot;</span><br><span class="line">    return pivotpos;</span><br><span class="line">&#125;</span><br><span class="line">void quick_sort(int arr[],const int left,const int right)&#123;</span><br><span class="line">    if (left &lt; right)&#123;</span><br><span class="line">        int pivotpos = partition(arr, left, right);</span><br><span class="line">        quick_sort(arr, left, pivotpos - 1);</span><br><span class="line">        quick_sort(arr, pivotpos + 1, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void quick_sort(int arr[], int len)&#123;</span><br><span class="line">    quick_sort(arr, 0, len - 1);</span><br><span class="line">&#125;</span><br><span class="line">int improve_partition(int arr[], int left, int right)&#123;</span><br><span class="line">    //基准进行随机化处理</span><br><span class="line">    int n = right - left + 1;</span><br><span class="line">    srand(time((unsigned)0));</span><br><span class="line">    int gap = rand() % n;</span><br><span class="line">    swap(arr[left], arr[left + gap]);  //把随机化的基准与左边进行交换</span><br><span class="line">    //再从左边开始进行</span><br><span class="line">    return partition(arr,left,right);</span><br><span class="line">&#125;</span><br><span class="line">void quick_improve_sort(int arr[], const int left, const int right)&#123;</span><br><span class="line">    //改进的快速排序</span><br><span class="line">    //改进的地方：1、在规模较小时采用插入排序</span><br><span class="line">    //2、基准进行随机选择</span><br><span class="line">    int M = 5;</span><br><span class="line">    if (right - left &lt; M)&#123;</span><br><span class="line">        insert_sort(arr, right-left+2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (left&gt;=right)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int pivotpos = improve_partition(arr, left, right);</span><br><span class="line">    quick_improve_sort(arr, left, pivotpos - 1);</span><br><span class="line">    quick_improve_sort(arr, pivotpos + 1, right);</span><br><span class="line">&#125;</span><br><span class="line">void quick_improve_sort(int arr[], int len)&#123;</span><br><span class="line">    quick_improve_sort(arr, 0, len - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>非比较排序：计数排序，基数排序，桶排序，时间复杂度能够达到O(n). 这些排序为了达到不比较的目的，对数据做了一些
+基本假 设（限制）。如计数排序假设数据都[0,n] 范围内，且范围较小；基数排序假设数据都[0,n] 范围内；也是桶排序假
+设数据均匀独立的分布。
+</code></pre><h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><pre><code>堆排序通常基于⼆叉堆 实现， 以⼤根堆为例， 堆排序的实现过程分为两个⼦过程。 第⼀步为取出⼤根
+堆的根节点(当前堆的最⼤值), 由于取⾛了⼀个节点， 故需要对余下的元素重新建堆。 重新建堆后继续
+取根节点， 循环直⾄取完所有节点， 此时数组已经有序。 
+时间复杂度 O(nlogn), 空间复杂度O(1). 从这一点就可以看出，堆排序在时间上类似归并，但是它又是一种原地排序，时间
+复杂度小于归并的O(n+logn)
+排序时间与输入无关，最好，最差，平均都是O(nlogn). 不稳定
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line">C++</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class HeapSort &#123;</span><br><span class="line">    // get the parent node index</span><br><span class="line">    int parent(int i) &#123;</span><br><span class="line">        return (i - 1) / 2;</span><br><span class="line">    &#125; </span><br><span class="line">    // get the left child node index</span><br><span class="line">    int left(int i) &#123;</span><br><span class="line">        return 2 * i + 1;</span><br><span class="line">    &#125; </span><br><span class="line">    // get the right child node index</span><br><span class="line">    int right(int i) &#123;</span><br><span class="line">        return 2 * i + 2;</span><br><span class="line">    &#125; </span><br><span class="line">    // build max heap</span><br><span class="line">    void build_max_heapify(vector&lt;int&gt; &amp;nums, int heap_size) &#123;</span><br><span class="line">        for (int i = heap_size / 2; i &gt;= 0; --i) &#123;</span><br><span class="line">            max_heapify(nums, i, heap_size);</span><br><span class="line">         &#125;</span><br><span class="line">         print_heap(nums, heap_size);</span><br><span class="line">    &#125; </span><br><span class="line">    // build min heap</span><br><span class="line">    void build_min_heapify(vector&lt;int&gt; &amp;nums, int heap_size) &#123;</span><br><span class="line">        for (int i = heap_size / 2; i &gt;= 0; --i) &#123;</span><br><span class="line">            min_heapify(nums, i, heap_size);</span><br><span class="line">         &#125; </span><br><span class="line">         print_heap(nums, heap_size);</span><br><span class="line">    &#125;</span><br><span class="line">    // adjust the heap to max-heap</span><br><span class="line">    void max_heapify(vector&lt;int&gt; &amp;nums, int k, int len) &#123; </span><br><span class="line">        // int len = nums.size();</span><br><span class="line">        while (k &lt; len) &#123;</span><br><span class="line">            int max_index = k;</span><br><span class="line">            // left leaf node search</span><br><span class="line">            int l = left(k);</span><br><span class="line">            if (l &lt; len &amp;&amp; nums[l] &gt; nums[max_index]) &#123;</span><br><span class="line">                max_index = l;</span><br><span class="line">            &#125;</span><br><span class="line">            // right leaf node search</span><br><span class="line">            int r = right(k);</span><br><span class="line">            if (r &lt; len &amp;&amp; nums[r] &gt; nums[max_index]) &#123;</span><br><span class="line">                max_index = r</span><br><span class="line">            &#125;;</span><br><span class="line">            // node after k are max-heap already</span><br><span class="line">            if (k == max_index) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125; </span><br><span class="line">            // keep the root node the largest</span><br><span class="line">            int temp = nums[k];</span><br><span class="line">            nums[k] = nums[max_index];</span><br><span class="line">            nums[max_index] = temp;</span><br><span class="line">            // adjust not only just current index</span><br><span class="line">            k = max_index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    // adjust the heap to min-heap</span><br><span class="line">    void min_heapify(vector&lt;int&gt; &amp;nums, int k, int len) &#123;</span><br><span class="line">        // int len = nums.size();</span><br><span class="line">        while (k &lt; len) &#123;</span><br><span class="line">            int min_index = k;</span><br><span class="line">            // left leaf node search</span><br><span class="line">            int l = left(k);</span><br><span class="line">            if (l &lt; len &amp;&amp; nums[l] &lt; nums[min_index]) &#123;</span><br><span class="line">                min_index = l;</span><br><span class="line">            &#125; </span><br><span class="line">            // right leaf node search</span><br><span class="line">            int r = right(k);</span><br><span class="line">            if (r &lt; len &amp;&amp; nums[r] &lt; nums[min_index]) &#123;</span><br><span class="line">                min_index = r;</span><br><span class="line">            &#125; </span><br><span class="line">            // node after k are min-heap already</span><br><span class="line">            if (k == min_index) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125; </span><br><span class="line">            // keep the root node the largest</span><br><span class="line">            int temp = nums[k];</span><br><span class="line">            nums[k] = nums[min_index];</span><br><span class="line">            nums[min_index] = temp;</span><br><span class="line">            // adjust not only just current index</span><br><span class="line">            k = min_index;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public:</span><br><span class="line">        // heap sort</span><br><span class="line">        void heap_sort(vector&lt;int&gt; &amp;nums) &#123;</span><br><span class="line">            int len = nums.size();</span><br><span class="line">            // init heap structure</span><br><span class="line">            build_max_heapify(nums, len);</span><br><span class="line">            // heap sort</span><br><span class="line">            for (int i = len - 1; i &gt;= 0; --i) &#123;</span><br><span class="line">                // put the largest number int the last</span><br><span class="line">                int temp = nums[0];</span><br><span class="line">                nums[0] = nums[i];</span><br><span class="line">                nums[i] = temp;</span><br><span class="line">                // reconstruct heap</span><br><span class="line">                build_max_heapify(nums, i);</span><br><span class="line">            &#125; </span><br><span class="line">            print_heap(nums, len);</span><br><span class="line">        &#125; </span><br><span class="line">        // print heap between [0, heap_size - 1]</span><br><span class="line">        void print_heap(vector&lt;int&gt; &amp;nums, int heap_size) &#123;</span><br><span class="line">            for (int i = 0; i &lt; heap_size; ++i) &#123;</span><br><span class="line">                cout &lt;&lt; nums[i] &lt;&lt; &quot;, &quot;;</span><br><span class="line">            &#125; </span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int A[] = &#123;19, 1, 10, 14, 16, 4, 7, 9, 3, 2, 8, 5, 11&#125;;</span><br><span class="line">    vector&lt;int&gt; nums;</span><br><span class="line">    for (int i = 0; i &lt; sizeof(A) / sizeof(A[0]); ++i) &#123;</span><br><span class="line">        nums.push_back(A[i]);</span><br><span class="line">    &#125; </span><br><span class="line">    HeapSort sort;</span><br><span class="line">    sort.print_heap(nums, nums.size());</span><br><span class="line">    sort.heap_sort(nums);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C++</span><br><span class="line">void shiftDown(int arr[], int start, int end)&#123;  </span><br><span class="line">    //从start出发到end，调整为最大堆</span><br><span class="line">    int dad = start;</span><br><span class="line">    int son = dad * 2 + 1;</span><br><span class="line">    while (son &lt;= end)&#123;</span><br><span class="line">        //先选取子节点中较大的</span><br><span class="line">        if (son + 1 &lt;= end &amp;&amp; arr[son] &lt; arr[son + 1])&#123;</span><br><span class="line">            son++;</span><br><span class="line">        &#125;</span><br><span class="line">        //若子节点比父节点大，则交换，继续往子节点寻找；否则退出</span><br><span class="line">        if (arr[dad] &lt; arr[son])&#123;</span><br><span class="line">            swap(arr[dad], arr[son]);</span><br><span class="line">            dad = son;</span><br><span class="line">            son = dad * 2 + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void heap_sort(int arr[], int len)&#123;</span><br><span class="line">    //先调整为最大堆，再依次与第一个交换，进行调整，最后构成最小堆</span><br><span class="line">    for (int i = (len - 2) / 2; i &gt;= 0; i--)&#123;   //len为总长度，最后一个为len-1,所以父节点为    (len-1-1)/2</span><br><span class="line">        shiftDown(arr,i,len-1);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = len - 1; i &gt;= 0; i--)&#123;</span><br><span class="line">        swap(arr[i], arr[0]);</span><br><span class="line">        shiftDown(arr, 0,i-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><pre><code>桶排序和归并排序有那么点点类似， 也使⽤了归并的思想。 ⼤致步骤如下：
+1. 设置⼀个定量的数组当作空桶。
+2. Divide - 从待排序数组中取出元素， 将元素按照⼀定的规则塞进对应的桶⼦去。
+3. 对每个⾮空桶进⾏排序， 通常可在塞元素⼊桶时进⾏插⼊排序。
+4. Conquer - 从⾮空桶把元素再放回原来的数组中。
+平均时间复杂度为线性的 O(n+C) 最优情形下，桶排序的时间复杂度为O(n)。
+桶排序的空间复杂度通常是比较高的，额外开销为O(n+m)（因为要维护 M 个数组的引用）。
+就是桶越多，时间效率就越高，而桶越多，空间却就越大，由此可见时间和空间是一个矛盾的两个方面。
+</code></pre><h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><pre><code>计数排序， 顾名思义， 就是对待排序数组按元素进⾏计数。 使⽤前提是需要先知道待排序数组的元素
+范围， 将这些⼀定范围的元素置于新数组中， 新数组的⼤⼩为待排序数组中最⼤元素与最⼩元素的差
+值。
+维基上总结的四个步骤如下：
+1. 定新数组⼤⼩——找出待排序的数组中最⼤和最⼩的元素
+2. 统计次数——统计数组中每个值为i的元素出现的次数， 存⼊新数组C的第i项
+3. 对统计次数逐个累加——对所有的计数累加（从C中的第⼀个元素开始， 每⼀项和前⼀项相加）
+4. 反向填充⽬ 标数组——将每个元素i放在新数组的第C(i)项， 每放⼀个元素就将C(i)减去1
+其中反向填充主要是为了避免重复元素落⼊新数组的同⼀索引处。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">public int[] countsort(int A[])&#123;</span><br><span class="line">        int[] B = new int[A.length]; //to store result after sorting</span><br><span class="line">        int k = max(A);</span><br><span class="line">        int [] C = new int[k+1]; // to store temp</span><br><span class="line">        for(int i=0;i&lt;A.length;i++)&#123;    </span><br><span class="line">            C[A[i]] = C[A[i]] + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        // 小于等于A[i]的数的有多少个, 存入数组C</span><br><span class="line">        for(int i=1;i&lt;C.length;i++)&#123;</span><br><span class="line">            C[i] = C[i] + C[i-1];</span><br><span class="line">        &#125;</span><br><span class="line">        //逆序输出确保稳定-相同元素相对顺序不变</span><br><span class="line">        for(int i=A.length-1;i&gt;=0;i--)&#123;</span><br><span class="line">            B[C[A[i]]-1] = A[i]; </span><br><span class="line">            C[A[i]] = C[A[i]]-1;</span><br><span class="line">        &#125;</span><br><span class="line">        return B;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">C++</span><br><span class="line">void count_sort(int arr[],int sorted_arr[],int len,int k)&#123;</span><br><span class="line">    //数组中的元素大小为0-k，</span><br><span class="line">    //先统计每个数的相对位置，再算出该数所在序列中排序后的绝对位置</span><br><span class="line">    int *count_arr = (int*)malloc(sizeof(int)*(k+1));</span><br><span class="line">    for (int i = 0; i &lt;= k; i++)&#123;</span><br><span class="line">        count_arr[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; len; i++)&#123;       //每个元素的相对位置</span><br><span class="line">        count_arr[arr[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= k; i++)&#123;       //每个元素的绝对位置，位置为第1个到n个</span><br><span class="line">        count_arr[i] += count_arr[i - 1];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = len-1; i &gt;=0; i--)&#123;     //从后往前，可使排序稳定，相等的俩个数的位置不会发    生逆序</span><br><span class="line">        count_arr[arr[i]]--;             //把在排序后序列中绝对位置为1-n的数依次放入到0-    (n-1)中</span><br><span class="line">        sorted_arr[count_arr[arr[i]]] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    free(count_arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><pre><code>原理类似桶排序,这⾥总是需要10个桶,多次使⽤
+⾸先以个位数的值进⾏装桶,即个位数为1则放⼊1号桶,为9则放⼊9号桶,暂时忽视⼗位数
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://segmentfault.com/img/bVlf9S" target="_blank" rel="noopener">总结</a></h3><pre><code>稳定性：
+选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，
+冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法。
+常用时间复杂度的大小关系：O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n2)&lt;O(n3)&lt;O(2n)&lt;O(n!)&lt;O(nn)
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">Algorithm</th>
+<th style="text-align:center">Average</th>
+<th style="text-align:center">Best</th>
+<th style="text-align:center">Worst</th>
+<th style="text-align:center">extra space</th>
+<th style="text-align:center">stable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(N)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">直接插入排序</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(N)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">折半插入排序</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">简单选择排序</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(N^2)</td>
+<td style="text-align:center">O(logN)~O(N^2)</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(N)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排序</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(NlogN)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">计数排序</td>
+<td style="text-align:center">O(d*(N+K))</td>
+<td style="text-align:center">O(d*(N+K))</td>
+<td style="text-align:center">O(d*(N+K))</td>
+<td style="text-align:center">O(N+K)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/io/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/io/2018/07/14/linux/" rel="next" title="鸟哥的Linux私房菜">
+                <i class="fa fa-chevron-left"></i> 鸟哥的Linux私房菜
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/io/2018/07/16/苏集/" rel="prev" title="苏集">
+                苏集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/07/14/DataStructure/"
+           data-title="数据结构" data-url="http://dty075.coding.me/io/2018/07/14/DataStructure/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/io/images/flower.png"
+               alt="dty075" />
+          <p class="site-author-name" itemprop="name">dty075</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/io/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/io/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/io/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dty075" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/user" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-skype"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree"><span class="nav-number">1.3.</span> <span class="nav-text">Binary Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huffman-Compression"><span class="nav-number">1.4.</span> <span class="nav-text">Huffman Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">1.5.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap"><span class="nav-number">1.6.</span> <span class="nav-text">Heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stack"><span class="nav-number">1.7.</span> <span class="nav-text">Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">1.8.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.9.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph"><span class="nav-number">1.10.</span> <span class="nav-text">Graph</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">2.3.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">2.4.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">2.5.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">2.6.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">2.7.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">2.8.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">2.9.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">2.10.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.11.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leetcode"><span class="nav-number">3.</span> <span class="nav-text">Leetcode</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dty075</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three-waves.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/io/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/io/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/io/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

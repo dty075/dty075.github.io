@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/io/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="经验," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/io/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="小土刀的博客给了我很大的启发，现将其思路整理如下。">
+<meta name="keywords" content="经验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小土刀学习笔记">
+<meta property="og:url" content="http://dty075.coding.me/io/2018/07/13/小土刀/index.html">
+<meta property="og:site_name" content="jiangling">
+<meta property="og:description" content="小土刀的博客给了我很大的启发，现将其思路整理如下。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-14T02:20:14.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小土刀学习笔记">
+<meta name="twitter:description" content="小土刀的博客给了我很大的启发，现将其思路整理如下。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dty075.coding.me/io/2018/07/13/小土刀/"/>
+
+
+
+
+
+  <title>小土刀学习笔记 | jiangling</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jiangling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-entertainment">
+          <a href="/io/entertainment/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            珊瑚海
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/io/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pagelines"></i> <br />
+            
+            青花
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-language">
+          <a href="/io/language/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-compass"></i> <br />
+            
+            带你去旅行
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work">
+          <a href="/io/work/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            烟火里的尘埃
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/io/technology/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-balance-scale"></i> <br />
+            
+            天空之城
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dty075.coding.me/io/io/2018/07/13/小土刀/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dty075">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/io/images/flower.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jiangling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小土刀学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T01:25:58+08:00">
+                2018-07-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T10:20:14+08:00">
+                2018-07-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/io/categories/小土刀/" itemprop="url" rel="index">
+                    <span itemprop="name">小土刀</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/io/2018/07/13/小土刀/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/13/小土刀/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://wdxtub.com/" target="_blank" rel="noopener">小土刀</a>的博客给了我很大的启发，现将其思路整理如下。</p>
+<a id="more"></a> 
+<p><a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:dty075/dty075.github.io.git</p>
+<h2 id="关于类别"><a href="#关于类别" class="headerlink" title="关于类别"></a>关于类别</h2><p>不周山：技术类文档</p>
+<p>通天塔：工程实践，包括团队建设、数据平台、实战技术、编程语言、移动开发</p>
+<p>好望角：生活，包括周记、生活方式、兴趣</p>
+<p>书影音：散文、历史、悬疑、社会、运动、武侠</p>
+<blockquote>
+<p>技术类文档：编程、数据结构、网络、操作系统、设计模式、sql—天空之城</p>
+</blockquote>
+<blockquote>
+<p>工作类文档：国家电网、软件测试、动画—烟火里的尘埃</p>
+</blockquote>
+<blockquote>
+<p>语言：英语、日语、西班牙语、（意大利语）—带我去旅行</p>
+</blockquote>
+<blockquote>
+<p>生活：下厨房、摄影、旅游、绘画—青花</p>
+</blockquote>
+<blockquote>
+<p>娱乐：小说、电视剧、电影、音乐—珊瑚海</p>
+</blockquote>
+<h2 id="md文件用法"><a href="#md文件用法" class="headerlink" title="md文件用法"></a>md文件用法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><ul>
+<li><p>#一级标题</p>
+</li>
+<li><p>## 二级标题</p>
+</li>
+<li><p>### 三级标题</p>
+</li>
+</ul>
+<p>以此类推，总共六级标题，建议在井号后加一个空格</p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加 1.2.3. 符号要和文字之间加上一个字符的空格。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。</p>
+<p>> 例如这样</p>
+<blockquote>
+<p>例如这样</p>
+</blockquote>
+<p>只需要在文本前加入 &gt; 这种尖括号（大于号）即可</p>
+<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入链接与插入图片的语法很像，区别在一个 !号</p>
+<p>插入图片的地址需要图床，这里推荐 <a href="https://www.getcloudapp.com/" target="_blank" rel="noopener">CloudApp</a> 的服务，生成URL地址即可。</p>
+<h3 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h3><p>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
+<p>例如：<strong>这里是粗体</strong> <em>这里是斜体</em></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>表格是我觉得 Markdown 比较累人的地方，例子如下：</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:right">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:right">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:right">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:right">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<p><code>| Tables        | Are           | Cool  |</code><br><code>| ------------- | -------------:| -----:|</code><br><code>| col 3 is      | right-aligned | $1600 |</code><br><code>| col 2 is      | centered      |   $12 |</code><br><code>| zebra stripes | are neat      |    $1 |</code></p>
+<h3 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h3><p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用两个`把中间的代码包裹起来，如 `code`。图例：</p>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>分割线的语法只需要另起一行，连续输入三个星号 *** 即可。</p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo</a></h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><h4 id="init"><a href="#init" class="headerlink" title="init"></a>init</h4><p><code>$ hexo init [folder]</code></p>
+<p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><code>$ hexo new [layout] &lt;title&gt;</code></p>
+<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+<h4 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h4><p><code>$ hexo generate</code></p>
+<p>生成静态文件。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d, –deploy</td>
+<td style="text-align:left">文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td>-w, –watch</td>
+<td style="text-align:left">监视文件变动</td>
+</tr>
+</tbody>
+</table>
+<p>该命令可以简写为</p>
+<p><code>$ hexo g</code></p>
+<h4 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h4><p><code>$ hexo publish [layout] &lt;filename&gt;</code></p>
+<p>发表草稿。</p>
+<h4 id="server"><a href="#server" class="headerlink" title="server"></a>server</h4><p><code>$ hexo server</code></p>
+<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" target="_blank" rel="noopener">http://localhost:4000/。</a></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p, –port</td>
+<td style="text-align:left">重设端口</td>
+</tr>
+<tr>
+<td>-s, –static</td>
+<td style="text-align:left">只使用静态文件</td>
+</tr>
+<tr>
+<td>-l, –log</td>
+<td style="text-align:left">启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody>
+</table>
+<h4 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h4><p><code>$ hexo deploy</code></p>
+<p>部署网站。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-g, –generate</td>
+<td style="text-align:left">部署之前预先生成静态文件</td>
+</tr>
+</tbody>
+</table>
+<p>该命令可以简写为：</p>
+<p><code>$ hexo d</code></p>
+<h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><p><code>$ hexo render &lt;file1&gt; [file2] ...</code></p>
+<p>渲染文件。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-o, –output</td>
+<td style="text-align:left">设置输出路径</td>
+</tr>
+</tbody>
+</table>
+<h4 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h4><p><code>$ hexo migrate &lt;type&gt;</code></p>
+<p>从其他博客系统 迁移内容。</p>
+<h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><p><code>$ hexo clean</code></p>
+<p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p>
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><p><code>$ hexo list &lt;type&gt;</code></p>
+<p>列出网站资料。</p>
+<h4 id="version"><a href="#version" class="headerlink" title="version"></a>version</h4><p><code>$ hexo version</code></p>
+<p>显示 Hexo 版本。</p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><h4 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h4><p><code>$ hexo --safe</code></p>
+<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</p>
+<h4 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h4><p><code>$ hexo --debug</code></p>
+<p>在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。</p>
+<h4 id="简洁模式"><a href="#简洁模式" class="headerlink" title="简洁模式"></a>简洁模式</h4><p><code>$ hexo --silent</code></p>
+<p>隐藏终端信息。</p>
+<h4 id="自定义配置文件的路径"><a href="#自定义配置文件的路径" class="headerlink" title="自定义配置文件的路径"></a>自定义配置文件的路径</h4><p><code>$ hexo --config custom.yml</code></p>
+<p>自定义配置文件的路径，执行后将不再使用 _config.yml。</p>
+<h4 id="显示草稿"><a href="#显示草稿" class="headerlink" title="显示草稿"></a>显示草稿</h4><p><code>$ hexo --draft</code></p>
+<p>显示 source/_drafts 文件夹中的草稿文章。</p>
+<h4 id="自定义-CWD"><a href="#自定义-CWD" class="headerlink" title="自定义 CWD"></a>自定义 CWD</h4><p><code>$ hexo --cwd /path/to/cwd</code></p>
+<p>自定义当前工作目录（Current working directory）的路径。</p>
+<h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><p>你可以执行下列命令来创建一篇新文章。</p>
+<p><code>$ hexo new [layout] &lt;title&gt;</code></p>
+<p>您可以在命令中指定文章的布局（layout），默认为 post，可以通过修改 _config.yml 中的 default_layout 参数来指定默认布局。</p>
+<h4 id="布局（Layout）"><a href="#布局（Layout）" class="headerlink" title="布局（Layout）"></a>布局（Layout）</h4><p>Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径，而您自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</p>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th style="text-align:left">路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post</td>
+<td style="text-align:left">source/_posts</td>
+</tr>
+<tr>
+<td>page</td>
+<td style="text-align:left">source</td>
+</tr>
+<tr>
+<td>draft</td>
+<td style="text-align:left">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>不要处理我的文章</p>
+</blockquote>
+<blockquote>
+<p>如果你不想你的文章被处理，你可以将 Front-Matter 中的layout: 设为 false 。</p>
+</blockquote>
+<h4 id="文件名称"><a href="#文件名称" class="headerlink" title="文件名称"></a>文件名称</h4><p>Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来改变默认的文件名称，举例来说，设为 :year-:month-:day-:title.md 可让您更方便的通过日期来管理文章。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:title</td>
+<td style="text-align:left">标题（小写，空格将会被替换为短杠）</td>
+</tr>
+<tr>
+<td>:year</td>
+<td style="text-align:left">建立的年份，比如， 2015</td>
+</tr>
+<tr>
+<td>:month</td>
+<td style="text-align:left">建立的月份（有前导零），比如， 04</td>
+</tr>
+<tr>
+<td>:i_month</td>
+<td style="text-align:left">建立的月份（无前导零），比如， 4</td>
+</tr>
+<tr>
+<td>:day</td>
+<td style="text-align:left">建立的日期（有前导零），比如， 07</td>
+</tr>
+<tr>
+<td>:i_day</td>
+<td style="text-align:left">建立的日期（无前导零），比如， 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h4><p>刚刚提到了 Hexo 的一种特殊布局：draft，这种布局在建立时会被保存到 source/_drafts 文件夹，您可通过 publish 命令将草稿移动到 source/_posts 文件夹，该命令的使用方式与 new 十分类似，您也可在命令中指定 layout 来指定布局。</p>
+<p><code>$ hexo publish [layout] &lt;title&gt;</code></p>
+<p>草稿默认不会显示在页面中，您可在执行时加上 –draft 参数，或是把 render_drafts 参数设为 true 来预览草稿。</p>
+<h4 id="模版（Scaffold）"><a href="#模版（Scaffold）" class="headerlink" title="模版（Scaffold）"></a>模版（Scaffold）</h4><p>在新建文章时，Hexo 会根据 scaffolds 文件夹内相对应的文件来建立文件，例如：</p>
+<p><code>$ hexo new photo &quot;My Gallery&quot;</code></p>
+<p>在执行这行指令时，Hexo 会尝试在 <code>scaffolds</code> 文件夹中寻找 <code>photo.md</code>，并根据其内容建立文章，以下是您可以在模版中使用的变量：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layout</td>
+<td style="text-align:left">布局</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:left">标题</td>
+</tr>
+<tr>
+<td>date</td>
+<td style="text-align:left">文件建立日期</td>
+</tr>
+</tbody>
+</table>
+<h2 id="主题：next"><a href="#主题：next" class="headerlink" title="主题：next"></a>主题：<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">next</a></h2><h3 id="语言："><a href="#语言：" class="headerlink" title="语言："></a>语言：</h3><p>en——英语</p>
+<p>zh-Hans——中文</p>
+<h2 id="主题：maupassant"><a href="#主题：maupassant" class="headerlink" title="主题：maupassant"></a>主题：<a href="https://github.com/tufu9441/maupassant-hexo.git" target="_blank" rel="noopener">maupassant</a></h2><h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><p><code># Extensions</code><br><code>## Plugins: https://hexo.io/plugins/</code><br><code>## Themes: https://hexo.io/themes/</code><br><code>theme: maupassant</code></p>
+<p>这个主题依赖jade和sass插件,所以在配置好主题后,还要进行安装插件</p>
+<p><code>$ npm install hexo-renderer-jade --save</code><br><code>...</code><br><code>$ npm install hexo-renderer-sass --save</code></p>
+<h2 id="主题：diaspora"><a href="#主题：diaspora" class="headerlink" title="主题：diaspora"></a>主题：<a href="https://github.com/Fechin/hexo-theme-diaspora.git" target="_blank" rel="noopener">diaspora</a></h2><h3 id="新建文章模板"><a href="#新建文章模板" class="headerlink" title="新建文章模板"></a>新建文章模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: My awesome title</span><br><span class="line">date: 2016-10-12 18:38:45</span><br><span class="line">tags: </span><br><span class="line">- 标签</span><br><span class="line">- 标签</span><br><span class="line">mp3: http://domain.com/awesome.mp3</span><br><span class="line">cover: http://domain.com/awesome.jpg</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># 头部菜单，title: link</span><br><span class="line">menu:</span><br><span class="line">  Whoami: /whoami</span><br><span class="line">  Github: https://github.com/Fechin</span><br><span class="line">  Twitter: https://twitter.com/FechinLi</span><br><span class="line"></span><br><span class="line"># 是否显示目录</span><br><span class="line">TOC: false</span><br><span class="line"></span><br><span class="line"># 是否自动播放音乐</span><br><span class="line">autoplay: false</span><br><span class="line"></span><br><span class="line"># 默认音乐（随机播放）</span><br><span class="line">mp3: </span><br><span class="line">    - http://link.hhtjim.com/163/425570952.mp3</span><br><span class="line">    - http://link.hhtjim.com/163/425570952.mp3</span><br><span class="line"></span><br><span class="line"># 首页封面图, 为空时取文章的cover作为封面</span><br><span class="line">welcome_cover: # /img/welcome-cover.jpg</span><br><span class="line"></span><br><span class="line"># 默认文章封面图</span><br><span class="line">cover: /img/cover.jpg</span><br><span class="line"></span><br><span class="line"># Gitalk 评论插件（https://github.com/gitalk/gitalk）</span><br><span class="line">gitalk:</span><br><span class="line">    # 是否自动展开评论框</span><br><span class="line">    autoExpand: false</span><br><span class="line">    # 应用编号</span><br><span class="line">    clientID: &apos;&apos;</span><br><span class="line">    # 应用秘钥</span><br><span class="line">    clientSecret: &apos;&apos;</span><br><span class="line">    # issue仓库名</span><br><span class="line">    repo: &apos;&apos;</span><br><span class="line">    # Github名</span><br><span class="line">    owner: &apos;&apos;</span><br><span class="line">    # Github名</span><br><span class="line">    admin: [&apos;&apos;]</span><br><span class="line">    # Ensure uniqueness and length less than 50</span><br><span class="line">    id: location.pathname</span><br><span class="line">    # Facebook-like distraction free mode</span><br><span class="line">    distractionFreeMode: false</span><br><span class="line"></span><br><span class="line"># 网站关键字</span><br><span class="line">keywords: Fechin</span><br><span class="line"></span><br><span class="line"># 要使用google_analytics进行统计的话，这里需要配置ID</span><br><span class="line">google_analytics: </span><br><span class="line"></span><br><span class="line"># 网站ico</span><br><span class="line">favicon: /img/favicon.png</span><br><span class="line"></span><br><span class="line"># rss文件</span><br><span class="line">rss: atom.xml</span><br></pre></td></tr></table></figure>
+<h2 id="主题：concise"><a href="#主题：concise" class="headerlink" title="主题：concise"></a>主题：<a href="https://github.com/huangjunhui/concise.git" target="_blank" rel="noopener">concise</a></h2><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><code>$ cd themes/concise</code><br><code>$ git pull</code></p>
+<h3 id="配置指南"><a href="#配置指南" class="headerlink" title="配置指南"></a>配置指南</h3><p>配置文件：<code>themes/concise/_config.yml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">####menu</span><br><span class="line">menu:</span><br><span class="line">  Home: /</span><br><span class="line">  Archives: /archives</span><br><span class="line">  About: /about</span><br><span class="line">##菜单栏，如果你想把某个分类或者某个标签放在菜单栏上，可以通过以下方法实现。</span><br><span class="line">##首先在博客根目录的source文件下创建两个文件夹tags和categories,并在文件夹下分别创建文件index.md</span><br><span class="line">##tags的index.md文件的内容如下(记得去掉前面的##),categories的内容则将两个tags改成categories即可。</span><br><span class="line">##layout: tags</span><br><span class="line">##title: tags</span><br><span class="line">##---</span><br><span class="line">##最后在menu下进行配置即可，例如你要添加hexo分类，则在menu下添加hexo: /categories/hexo</span><br><span class="line"></span><br><span class="line">####widgets</span><br><span class="line">widgets:</span><br><span class="line">- search        ##搜索</span><br><span class="line">- category  ##分类</span><br><span class="line">- tagcloud  ##标签云</span><br><span class="line">- weibo     ##新浪微博秀，需要你自己去新浪微博秀获取代码，然后将weibo.ejs中的代码替换掉</span><br><span class="line">- links     ##友情链接，你可以进入links.ejs进行编辑</span><br><span class="line">##小插件，在concise/layout/_widget文件夹下提供了7个小插件，要使用的在widgets进行配置即可，</span><br><span class="line">##不使用则去掉，其中search默认使用的google，如果你想使用和我一样的站内搜索，可以访问以下链接：</span><br><span class="line">##http://opiece.me/2015/04/16/site-search-by-swiftype/</span><br><span class="line"></span><br><span class="line">duoshuo_enable: true    ##不想用，改为false即可</span><br><span class="line">duoshuo_shortname: chillax     ##你的多说shortname，上面为true，这个才会起效果，在多说官网注册一个自己的站点，在生成的代码里可以看到自己的shortname，在此处将chillax改成你的多说shortname即可。</span><br><span class="line">tencent_sid: 44218032</span><br><span class="line">##tencent analysis，腾讯分析sid</span><br><span class="line">baidu_sid: 7192fa361f5cabb11d8a22de41c1ba8f</span><br><span class="line">##baidu statistics id，百度统计sid，该sid为百度统计代码中：hm.src = &quot;//hm.baidu.com/hm.js?之后的一串字符</span><br><span class="line"></span><br><span class="line">excerpt_link: Read more ##文章摘要下方的阅读更多</span><br><span class="line"></span><br><span class="line">twitter:    ##twitter</span><br><span class="line">  username:</span><br><span class="line">  show_replies: false</span><br><span class="line">  tweet_count: 5</span><br><span class="line"></span><br><span class="line">#### Fancybox   ##图片效果</span><br><span class="line">fancybox: true</span><br><span class="line"></span><br><span class="line">google_analytics:   ##google分析</span><br><span class="line"></span><br><span class="line">#### RSS    ##RSS订阅</span><br><span class="line">rss: /atom.xml</span><br><span class="line">## RSS address.</span><br><span class="line"></span><br><span class="line">#### Image</span><br><span class="line">imglogo:</span><br><span class="line">  enable: true         ## 是否开启网站的logo，标题左边的logo。</span><br><span class="line">  src: imgs/logo.png   ## 图片放在`/concise/source/imgs`目录下,使用.svg和.png格式的图片.</span><br><span class="line">favicon: imgs/favicon.ico   ## 浏览器标签上显示的图片,放在`/concise/source/imgs`下.</span><br><span class="line"></span><br><span class="line">author_img_enable: true     ## 是否开启作者头像,左下角会旋转头像.</span><br><span class="line">author_img: imgs/author.jpg ## 作者头像的路径,以../comcise/source/文件夹为根路径,如果放在imgs文件夹下,格式如本人范例</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 作者信息，主要用于右下角的一些小图标链接的显示</span><br><span class="line">author:</span><br><span class="line">  google_plus:    ## eg:116338260303228776998 for https://plus.google.com/u/0/116338260303228776998</span><br><span class="line">  intro_line1: &quot;Hi,I&apos;m the designer of this theme.&quot; ##博客底部的第一句话</span><br><span class="line">  intro_line2: &quot;I will share this theme on github after a few week!&quot; ##底部底部的第二句话</span><br><span class="line">  weibo:      ## e.g. 1923610190 for http://weibo.com/1923610190</span><br><span class="line">  twitter:    ## e.g. yangjiansky for https://twitter.com/yangjiansky</span><br><span class="line">  github:     ## e.g. huangjunhui for https://github.com/huangjunhui </span><br><span class="line">  facebook:   ## e.g. yangjian for https://favebook.com/yangjian</span><br><span class="line">  tsina:      ## e.g. 1923610190  Your weibo ID,It will be used in share button.</span><br><span class="line">  linkedin:   ## e.g. in/jeffweiner08 for https://www.linkedin.com/in/jeffweiner08</span><br><span class="line">  email: jhhuang1993@foxmail.com##填写你的email地址</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/io/tags/经验/" rel="tag"># 经验</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/io/2018/07/13/TensorFlow/" rel="next" title="TensorFlow">
+                <i class="fa fa-chevron-left"></i> TensorFlow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/io/2018/07/13/BDMA/" rel="prev" title="BDMA">
+                BDMA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/07/13/小土刀/"
+           data-title="小土刀学习笔记" data-url="http://dty075.coding.me/io/2018/07/13/小土刀/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/io/images/flower.png"
+               alt="dty075" />
+          <p class="site-author-name" itemprop="name">dty075</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/io/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/io/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/io/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dty075" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/user" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-skype"></i>
+                  
+                    
+                      Coding
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于类别"><span class="nav-number">1.</span> <span class="nav-text">关于类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#md文件用法"><span class="nav-number">2.</span> <span class="nav-text">md文件用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">2.2.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.3.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片与链接"><span class="nav-number">2.4.</span> <span class="nav-text">图片与链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粗体与斜体"><span class="nav-number">2.5.</span> <span class="nav-text">粗体与斜体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格"><span class="nav-number">2.6.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码框"><span class="nav-number">2.7.</span> <span class="nav-text">代码框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割线"><span class="nav-number">2.8.</span> <span class="nav-text">分割线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo"><span class="nav-number">3.</span> <span class="nav-text">hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">3.1.</span> <span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#init"><span class="nav-number">3.1.1.</span> <span class="nav-text">init</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new"><span class="nav-number">3.1.2.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#generate"><span class="nav-number">3.1.3.</span> <span class="nav-text">generate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#publish"><span class="nav-number">3.1.4.</span> <span class="nav-text">publish</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#server"><span class="nav-number">3.1.5.</span> <span class="nav-text">server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deploy"><span class="nav-number">3.1.6.</span> <span class="nav-text">deploy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#render"><span class="nav-number">3.1.7.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#migrate"><span class="nav-number">3.1.8.</span> <span class="nav-text">migrate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clean"><span class="nav-number">3.1.9.</span> <span class="nav-text">clean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">3.1.10.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version"><span class="nav-number">3.1.11.</span> <span class="nav-text">version</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项"><span class="nav-number">3.2.</span> <span class="nav-text">选项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安全模式"><span class="nav-number">3.2.1.</span> <span class="nav-text">安全模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调试模式"><span class="nav-number">3.2.2.</span> <span class="nav-text">调试模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简洁模式"><span class="nav-number">3.2.3.</span> <span class="nav-text">简洁模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义配置文件的路径"><span class="nav-number">3.2.4.</span> <span class="nav-text">自定义配置文件的路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示草稿"><span class="nav-number">3.2.5.</span> <span class="nav-text">显示草稿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-CWD"><span class="nav-number">3.2.6.</span> <span class="nav-text">自定义 CWD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写作"><span class="nav-number">3.3.</span> <span class="nav-text">写作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#布局（Layout）"><span class="nav-number">3.3.1.</span> <span class="nav-text">布局（Layout）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件名称"><span class="nav-number">3.3.2.</span> <span class="nav-text">文件名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#草稿"><span class="nav-number">3.3.3.</span> <span class="nav-text">草稿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模版（Scaffold）"><span class="nav-number">3.3.4.</span> <span class="nav-text">模版（Scaffold）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题：next"><span class="nav-number">4.</span> <span class="nav-text">主题：next</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语言："><span class="nav-number">4.1.</span> <span class="nav-text">语言：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题：maupassant"><span class="nav-number">5.</span> <span class="nav-text">主题：maupassant</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装："><span class="nav-number">5.1.</span> <span class="nav-text">安装：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题：diaspora"><span class="nav-number">6.</span> <span class="nav-text">主题：diaspora</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文章模板"><span class="nav-number">6.1.</span> <span class="nav-text">新建文章模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题配置"><span class="nav-number">6.2.</span> <span class="nav-text">主题配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题：concise"><span class="nav-number">7.</span> <span class="nav-text">主题：concise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">7.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置指南"><span class="nav-number">7.2.</span> <span class="nav-text">配置指南</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dty075</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/three-waves.min.js"></script>
+
+  
+  <script type="text/javascript" src="/io/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/io/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/io/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/io/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/io/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/io/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
